@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Open Graph card — minimal cream, wordmark + positioning + the radial mark.
+       Source for og.png (rasterized with rsvg-convert). ADR-042: minimal & sincere. -->
+  <rect width="1200" height="630" fill="#f7f3eb"/>
+
+  <!-- Text block (left) -->
+  <text x="96" y="278" font-family="Iowan Old Style, Palatino, Georgia, serif"
+        font-size="104" font-weight="600" fill="#21201b" letter-spacing="-1.5">SliceFocus</text>
+  <text x="100" y="356" font-family="Iowan Old Style, Palatino, Georgia, serif"
+        font-size="40" fill="#4a443a">Plan your day on a clock.</text>
+  <text x="100" y="408" font-family="Iowan Old Style, Palatino, Georgia, serif"
+        font-size="40" fill="#4a443a">It runs itself.</text>
+  <rect x="102" y="452" width="116" height="6" rx="3" fill="#bf5b3e"/>
+  <text x="100" y="556" font-family="-apple-system, Helvetica, Arial, sans-serif"
+        font-size="26" fill="#6f685b">A visual day planner with zero-touch auto-advance.</text>
+
+  <!-- Radial mark (right) — the app's forest-palette donut, no icon tile. -->
+  <g transform="translate(742,79) scale(0.46)">
+    <path d="M 518.1 172.1 A 340 340 0 0 1 851.4 505.9 L 716.7 503.5 A 210 210 0 0 0 513.7 302.1 Z" fill="#2D4A3E"/>
+    <path d="M 851.1 518.1 A 340 340 0 0 1 720.6 770.0 L 637.4 660.8 A 210 210 0 0 0 716.5 517.7 Z" fill="#7BAE7F"/>
+    <path d="M 704.7 786.7 A 340 340 0 0 1 319.3 783.5 L 395.6 663.1 A 210 210 0 0 0 625.8 668.0 Z" fill="#4A8C6F"/>
+    <path d="M 302.5 769.0 A 340 340 0 0 1 165.3 456.4 L 305.2 475.8 A 210 210 0 0 0 385.5 660.4 Z" fill="#A67C52"/>
+    <path d="M 168.3 438.1 A 340 340 0 0 1 505.9 172.1 L 508.5 302.1 A 210 210 0 0 0 311.0 459.9 Z" fill="#B8C9A3"/>
+    <circle cx="512" cy="512" r="208" fill="#fffdf8"/>
+    <polygon points="490,450 490,574 594,512" fill="#2D4A3E"/>
+  </g>
+</svg>
