@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>SliceFocus — plan your day on a clock. It runs itself.</title>
+  <meta name="description" content="SliceFocus lays your day out on a 24-hour clock and advances from one focus block to the next on its own — no timers to start, no taps between tasks. A calm visual day planner with a built-in Pomodoro timer.">
+  <link rel="canonical" href="https://slicefocus.app/">
+
+  <!-- Open Graph / Twitter — the click magnet for Reddit (#313) / HN (#314) posts. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SliceFocus">
+  <meta property="og:title" content="SliceFocus — plan your day on a clock. It runs itself.">
+  <meta property="og:description" content="A calm visual day planner on a 24-hour clock, with zero-touch auto-advance between focus blocks.">
+  <meta property="og:url" content="https://slicefocus.app/">
+  <meta property="og:image" content="https://slicefocus.app/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="SliceFocus — a day laid out on a 24-hour radial clock.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SliceFocus — plan your day on a clock. It runs itself.">
+  <meta name="twitter:description" content="A calm visual day planner on a 24-hour clock, with zero-touch auto-advance between focus blocks.">
+  <meta name="twitter:image" content="https://slicefocus.app/og.png">
+
+  <meta name="theme-color" content="#f7f3eb" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a1714" media="(prefers-color-scheme: dark)">
+
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <span class="wordmark">
+        <img src="icon.svg" alt="" width="22" height="22" style="vertical-align:-4px;margin-right:7px">SliceFocus
+      </span>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="wrap">
+        <h1>Plan your day on a clock.<br>It runs itself.</h1>
+        <p class="lede">
+          SliceFocus lays your day out on a 24-hour circle and moves from one
+          focus block to the next on its own — no timers to start, no taps
+          between tasks.
+        </p>
+
+        <!-- Portrait product screen: rounded corners + soft shadow, no device bezel.
+             TODO(#311): drop in the 15-sec silent radial auto-advance clip as
+             hero.mp4 / hero.webm. Until those files exist, the poster placeholder
+             (hero-poster.png) shows. This frame is the hero-crop spec for #311:
+             portrait 9:19.5. -->
+        <div class="hero-media">
+          <video poster="hero-poster.png" autoplay loop muted playsinline
+                 preload="metadata"
+                 aria-label="The SliceFocus radial timer auto-advancing between time blocks">
+            <source src="hero.webm" type="video/webm">
+            <source src="hero.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <!-- App Store badge — official Apple artwork.
+             TODO: replace the href with the live App Store product URL
+             (https://apps.apple.com/app/idXXXXXXXXXX) before this page goes public. -->
+        <a class="appstore" href="https://apps.apple.com/app/slicefocus/id000000000"
+           aria-label="Download SliceFocus on the App Store">
+          <img src="download-on-the-app-store.svg" alt="Download on the App Store"
+               width="156" height="52">
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== How it works ===== -->
+    <section class="how section-divider">
+      <div class="wrap">
+        <p class="eyebrow">How it works</p>
+        <h2>Draw your day. Then let it carry you.</h2>
+        <p>
+          Sketch your day as colored blocks on a 24-hour radial canvas — one
+          glance shows where your time actually goes. Tap a block to start a
+          focus session with a built-in Pomodoro timer.
+        </p>
+        <p>
+          When a block ends, the next one begins on its own. No alarm to dismiss,
+          no “start” button to find — you just keep working while the clock moves
+          underneath you.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Science ===== -->
+    <section class="science section-divider">
+      <div class="wrap">
+        <p class="eyebrow">Why it works</p>
+        <h2>Built on how attention actually behaves.</h2>
+        <p>SliceFocus leans on a few things the research is fairly clear about:</p>
+
+        <ul class="claims">
+          <li>
+            <p class="claim">
+              Switching tasks leaves part of your attention stuck on the one you
+              just left — what researchers call <em>attention residue</em>.
+            </p>
+            <p class="cite">
+              Leroy, “Why is it so hard to do my work?” —
+              <a href="https://doi.org/10.1016/j.obhdp.2009.04.002"
+                 target="_blank" rel="noopener">Organizational Behavior and Human
+                Decision Processes, 2009</a>.
+            </p>
+          </li>
+          <li>
+            <p class="claim">
+              Deciding in advance <em>when</em> and <em>where</em> you’ll do
+              something reliably improves follow-through.
+            </p>
+            <p class="cite">
+              Gollwitzer &amp; Brandstätter, “Implementation Intentions and
+              Effective Goal Pursuit” —
+              <a href="https://doi.org/10.1037/0022-3514.73.1.186"
+                 target="_blank" rel="noopener">Journal of Personality and Social
+                Psychology, 1997</a>.
+            </p>
+          </li>
+          <li>
+            <p class="claim">
+              Interruptions don’t just cost the moment — getting your focus back
+              afterward takes real mental effort.
+            </p>
+            <p class="cite">
+              Mark, Gudith &amp; Klocke, “The Cost of Interrupted Work” —
+              <a href="https://doi.org/10.1145/1357054.1357072"
+                 target="_blank" rel="noopener">Proc. CHI, 2008</a>.
+            </p>
+          </li>
+          <li>
+            <p class="claim">
+              Seeing your plan laid out in front of you offloads work your memory
+              would otherwise have to carry.
+            </p>
+            <p class="cite">
+              Kirsh &amp; Maglio, “On Distinguishing Epistemic from Pragmatic
+              Action” —
+              <a href="https://doi.org/10.1207/s15516709cog1804_1"
+                 target="_blank" rel="noopener">Cognitive Science, 1994</a>.
+            </p>
+          </li>
+        </ul>
+
+        <p class="science-note">
+          These are findings about attention and planning in general, not studies
+          of SliceFocus. We just tried to build with the grain of them.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="links">
+        <a href="https://apps.apple.com/app/slicefocus/id000000000">App Store</a>
+      </p>
+      <p>© 2026 Mert Ertugrul · SliceFocus</p>
+    </div>
+  </footer>
+
+  <script>
+    // Respect reduced-motion: don't autoplay the looping hero for users who ask
+    // for less motion — leave the poster frame showing instead.
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('video[autoplay]').forEach(function (v) {
+        v.removeAttribute('autoplay');
+        v.pause();
+      });
+    }
+  </script>
+</body>
+</html>

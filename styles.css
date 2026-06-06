@@ -1,0 +1,209 @@
+/* SliceFocus — landing page.
+   Design language: ADR-042 "minimal & sincere".
+   Warm cream canvas, near-black editorial serif headlines, a single clay accent,
+   a narrow centered reading column, generous whitespace. The product is the hero;
+   the only saturation on the page lives inside the product video itself. */
+
+:root {
+  --bg:        #f7f3eb;  /* warm cream canvas */
+  --surface:   #fffdf8;  /* slightly lifted cards / device screen */
+  --fg:        #21201b;  /* near-black, warm */
+  --muted:     #6f685b;  /* warm grey for secondary text */
+  --accent:    #bf5b3e;  /* the single clay / terracotta accent */
+  --accent-ink:#9c4630;  /* darker accent for link hover */
+  --line:      #e7e0d2;  /* hairline rules */
+  --shadow: 0 24px 60px -20px rgba(58, 42, 28, 0.28);
+
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, ui-serif, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:        #1a1714;
+    --surface:   #221e19;
+    --fg:        #ece5d8;
+    --muted:     #a89f8f;
+    --accent:    #d87a5b;
+    --accent-ink:#eb9276;
+    --line:      #322c24;
+    --shadow: 0 24px 60px -22px rgba(0, 0, 0, 0.6);
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 18px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Narrow, centered reading column. */
+.wrap {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---- Typography ---- */
+h1, h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  color: var(--fg);
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 6vw, 3.25rem);
+  margin: 0 0 0.5em;
+}
+
+h2 {
+  font-size: clamp(1.45rem, 3.6vw, 1.8rem);
+  margin: 0 0 0.75rem;
+}
+
+p { margin: 0 0 1.1rem; }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+}
+a:hover { color: var(--accent-ink); border-bottom-color: var(--accent-ink); }
+
+.lede {
+  font-size: clamp(1.1rem, 2.6vw, 1.3rem);
+  color: var(--muted);
+  line-height: 1.55;
+  max-width: 34ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.9rem;
+}
+
+/* ---- Header ---- */
+.site-header {
+  text-align: center;
+  padding: 40px 0 0;
+}
+.wordmark {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  border: 0;
+}
+
+/* ---- Hero ---- */
+.hero {
+  text-align: center;
+  padding: clamp(48px, 9vw, 96px) 0 clamp(40px, 7vw, 72px);
+}
+
+/* Portrait product screen: rounded corners + soft shadow, centered on cream.
+   No device bezel (ADR-042). Doubles as the hero-crop spec for the #311 video. */
+.hero-media {
+  width: min(300px, 72vw);
+  aspect-ratio: 9 / 19.5;
+  margin: clamp(36px, 6vw, 56px) auto 0;
+  border-radius: 34px;
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.hero-media video,
+.hero-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---- App Store badge (official Apple artwork) ---- */
+.appstore {
+  display: inline-flex;
+  margin-top: clamp(32px, 5vw, 44px);
+  border: 0;
+  border-radius: 9px;
+  transition: opacity 0.15s ease;
+}
+.appstore:hover { opacity: 0.82; }
+.appstore img {
+  display: block;
+  height: 52px;
+  width: auto;
+}
+
+/* ---- Generic section rhythm ---- */
+section { padding: clamp(40px, 7vw, 72px) 0; }
+.section-divider { border-top: 1px solid var(--line); }
+
+.how p { color: var(--fg); }
+.how .step-lead { font-family: var(--serif); }
+
+/* ---- Science ---- */
+.science .claims {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+}
+.science .claims li {
+  padding: 1.15rem 0;
+  border-top: 1px solid var(--line);
+}
+.science .claims li:last-child { border-bottom: 1px solid var(--line); }
+.science .claim {
+  margin: 0 0 0.3rem;
+  font-size: 1.06rem;
+}
+.science .cite {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.science .cite a { font-size: inherit; }
+.science-note {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* ---- Footer ---- */
+.site-footer {
+  text-align: center;
+  padding: 48px 0 64px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.site-footer a { color: var(--muted); border-bottom-color: var(--line); }
+.site-footer a:hover { color: var(--fg); }
+.site-footer .links { margin-bottom: 0.6rem; }
+.site-footer .links a { margin: 0 10px; }
+
+/* ---- Motion preferences: don't autoplay the loop for reduced-motion users.
+   Paired with a tiny inline script that pauses the video. ---- */
+@media (prefers-reduced-motion: reduce) {
+  .appstore { transition: none; }
+}
