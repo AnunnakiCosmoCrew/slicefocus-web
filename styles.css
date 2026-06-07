@@ -122,22 +122,41 @@ a:hover { color: var(--accent-ink); border-bottom-color: var(--accent-ink); }
 }
 
 /* Portrait product screen: rounded corners + soft shadow, centered on cream.
-   No device bezel (ADR-042). Doubles as the hero-crop spec for the #311 video. */
+   No device bezel (ADR-042) — the real app screenshot is the hero. */
 .hero-media {
   width: min(300px, 72vw);
-  aspect-ratio: 9 / 19.5;
   margin: clamp(36px, 6vw, 56px) auto 0;
-  border-radius: 34px;
+  border-radius: 30px;
   overflow: hidden;
   background: var(--surface);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow), 0 0 0 1px color-mix(in srgb, var(--fg) 7%, transparent);
 }
-.hero-media video,
 .hero-media img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+}
+
+/* Secondary product shot (e.g. the focus timer in "How it works"). */
+.shot {
+  width: min(280px, 66vw);
+  margin: clamp(28px, 5vw, 44px) auto 0;
+  text-align: center;
+}
+.shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+  background: var(--surface);
+  box-shadow: var(--shadow), 0 0 0 1px color-mix(in srgb, var(--fg) 7%, transparent);
+}
+.shot figcaption {
+  margin: 1rem auto 0;
+  max-width: 36ch;
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.5;
 }
 
 /* ---- App Store badge (official Apple artwork) ---- */

@@ -51,18 +51,13 @@
           between tasks.
         </p>
 
-        <!-- Portrait product screen: rounded corners + soft shadow, no device bezel.
-             TODO(#311): drop in the 15-sec silent radial auto-advance clip as
-             hero.mp4 / hero.webm. Until those files exist, the poster placeholder
-             (hero-poster.png) shows. This frame is the hero-crop spec for #311:
-             portrait 9:19.5. -->
+        <!-- Real product screenshot: the 24-hour radial day view. Rounded corners
+             + soft shadow, no device bezel (ADR-042: show the real product, not an
+             illustration). #311 will produce a silent auto-advance clip that can
+             later replace this <img> with a matching-crop <video>. -->
         <div class="hero-media">
-          <video poster="hero-poster.png" autoplay loop muted playsinline
-                 preload="metadata"
-                 aria-label="The SliceFocus radial timer auto-advancing between time blocks">
-            <source src="hero.webm" type="video/webm">
-            <source src="hero.mp4" type="video/mp4">
-          </video>
+          <img src="screen-day.png" width="760" height="1543"
+               alt="The SliceFocus 24-hour radial day view: a colorful pie chart of the day's time blocks above a scrollable schedule.">
         </div>
 
         <!-- App Store badge — official Apple artwork. Country-agnostic link:
@@ -90,6 +85,15 @@
           no “start” button to find — you just keep working while the clock moves
           underneath you.
         </p>
+
+        <figure class="shot">
+          <img src="screen-focus.png" width="760" height="1495"
+               alt="A SliceFocus focus session: the Reading and Studying block with a 24:28 Pomodoro countdown, a WORK label, cycle 1 of 4, and Stop and Pause controls.">
+          <figcaption>
+            A block running its built-in Pomodoro timer — when its time is up, the
+            next block takes over automatically.
+          </figcaption>
+        </figure>
       </div>
     </section>
 
@@ -167,16 +171,5 @@
       <p>© 2026 Mert Ertugrul · SliceFocus</p>
     </div>
   </footer>
-
-  <script>
-    // Respect reduced-motion: don't autoplay the looping hero for users who ask
-    // for less motion — leave the poster frame showing instead.
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.querySelectorAll('video[autoplay]').forEach(function (v) {
-        v.removeAttribute('autoplay');
-        v.pause();
-      });
-    }
-  </script>
 </body>
 </html>
