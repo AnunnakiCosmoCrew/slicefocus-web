@@ -149,6 +149,15 @@ a:hover { color: var(--accent-ink); border-bottom-color: var(--accent-ink); }
 }
 .hero-media img { display: block; width: 100%; height: auto; }
 
+/* A quiet line under the headline so time-blocking / Pomodoro users can
+   self-identify before the lede. */
+.hero-audience {
+  font-size: clamp(0.95rem, 2vw, 1.08rem);
+  color: var(--muted);
+  max-width: 42ch;
+  margin: 0 auto 0.9rem;
+}
+
 /* ---- App Store badge (official Apple artwork) ---- */
 .appstore {
   display: inline-flex;
@@ -269,6 +278,19 @@ section { padding: clamp(48px, 8vw, 88px) 0; }
 .science .cite { margin: 0; font-size: 0.9rem; color: var(--muted); }
 .science .cite a { font-size: inherit; }
 .science-note { margin-top: 1.7rem; font-size: 0.92rem; color: var(--faint); }
+
+/* ---- Early days (honest signals: indie dev, no subscription, feedback) ---- */
+.early { text-align: center; }
+/* Only the unclassed description paragraph; keeps the faint note its own colour. */
+.early p:not([class]) { max-width: 48ch; margin-left: auto; margin-right: auto; }
+.early-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 22px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.6rem;
+}
 
 /* ---- Footer ---- */
 .site-footer {
