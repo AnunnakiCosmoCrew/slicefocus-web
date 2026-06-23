@@ -1,38 +1,46 @@
 /* SliceFocus — landing page.
-   Design language: ADR-042 "minimal & sincere".
-   Warm cream canvas, near-black editorial serif headlines, a single clay accent,
-   a narrow centered reading column, generous whitespace. The product is the hero;
-   the only saturation on the page lives inside the product video itself. */
+   Visual language modeled on claude.ai / anthropic.com (ADR-042 "minimal & sincere"):
+   warm cream canvas, Anthropic clay accent, large literary serif headlines (Fraunces
+   ≈ "Anthropic Serif"), a clean humanist sans (Inter ≈ "Anthropic Sans"), generous
+   whitespace, a dark pill CTA. The product is the hero; saturation lives in the
+   real app screenshots, not the page chrome. */
 
 :root {
-  --bg:        #f7f3eb;  /* warm cream canvas */
-  --surface:   #fffdf8;  /* slightly lifted cards / device screen */
-  --fg:        #21201b;  /* near-black, warm */
-  --muted:     #6f685b;  /* warm grey for secondary text */
-  --accent:    #bf5b3e;  /* the single clay / terracotta accent */
-  --accent-ink:#9c4630;  /* darker accent for link hover */
-  --line:      #e7e0d2;  /* hairline rules */
-  --shadow: 0 24px 60px -20px rgba(58, 42, 28, 0.28);
+  --bg:        #f0eee6;  /* the signature Anthropic cream canvas */
+  --surface:   #faf9f5;  /* lifted paper — screenshot frames */
+  --fg:        #141413;  /* warm near-black */
+  --muted:     #6f6e66;  /* warm grey, secondary text */
+  --faint:     #8a897f;  /* warm grey, tertiary text */
+  --accent:    #d97757;  /* Anthropic clay / coral */
+  --accent-ink:#c4623f;  /* deeper clay for hover */
+  --line:      #e3dacc;  /* warm hairline rules / borders */
+  --btn:       #141413;  /* dark pill button */
+  --btn-fg:    #faf9f5;
+  --btn-hover: #2b2a26;
+  --shadow: 0 28px 60px -28px rgba(38, 30, 20, 0.30);
 
-  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, ui-serif, serif;
-  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --serif: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, ui-serif, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg:        #1a1714;
-    --surface:   #221e19;
-    --fg:        #ece5d8;
-    --muted:     #a89f8f;
-    --accent:    #d87a5b;
-    --accent-ink:#eb9276;
-    --line:      #322c24;
-    --shadow: 0 24px 60px -22px rgba(0, 0, 0, 0.6);
+    --bg:        #1a1916;
+    --surface:   #22201c;
+    --fg:        #ece7dd;
+    --muted:     #a8a297;
+    --faint:     #8d877c;
+    --accent:    #e08a6b;
+    --accent-ink:#ef9d80;
+    --line:      #33302a;
+    --btn:       #ece7dd;
+    --btn-fg:    #1a1916;
+    --btn-hover: #fffdf8;
+    --shadow: 0 28px 60px -28px rgba(0, 0, 0, 0.6);
   }
 }
 
 * { box-sizing: border-box; }
-
 html { -webkit-text-size-adjust: 100%; }
 
 body {
@@ -40,170 +48,244 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--sans);
-  font-size: 18px;
-  line-height: 1.65;
+  font-size: 1.0625rem;        /* ~17px */
+  line-height: 1.62;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* Narrow, centered reading column. */
-.wrap {
-  width: 100%;
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
+/* ---- Containers: a wide shell for the nav, a narrow column for reading ---- */
+.shell { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.wrap  { width: 100%; max-width: 660px;  margin: 0 auto; padding: 0 24px; }
 
 /* ---- Typography ---- */
-h1, h2 {
+h1, h2, h3 {
   font-family: var(--serif);
-  font-weight: 600;
-  letter-spacing: -0.012em;
+  font-weight: 500;
   color: var(--fg);
-  line-height: 1.1;
+  line-height: 1.08;
+  letter-spacing: -0.018em;
+  font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 0;
 }
-
-h1 {
-  font-size: clamp(2.2rem, 6vw, 3.25rem);
-  margin: 0 0 0.5em;
-}
-
-h2 {
-  font-size: clamp(1.45rem, 3.6vw, 1.8rem);
-  margin: 0 0 0.75rem;
-}
+h1 { font-size: clamp(2.7rem, 7vw, 4.1rem); margin: 0 0 0.36em; }
+h2 { font-size: clamp(1.7rem, 4.2vw, 2.3rem); margin: 0 0 0.6rem; line-height: 1.12; }
 
 p { margin: 0 0 1.1rem; }
 
 a {
   color: var(--accent);
   text-decoration: none;
+  border-bottom: 1px solid var(--line);  /* fallback for browsers without color-mix() */
   border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
 }
 a:hover { color: var(--accent-ink); border-bottom-color: var(--accent-ink); }
 
 .lede {
-  font-size: clamp(1.1rem, 2.6vw, 1.3rem);
+  font-size: clamp(1.15rem, 2.4vw, 1.35rem);
+  line-height: 1.5;
   color: var(--muted);
-  line-height: 1.55;
-  max-width: 34ch;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 36ch;
+  margin: 0 auto;
 }
 
 .eyebrow {
-  font-family: var(--sans);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--accent);
-  margin: 0 0 0.9rem;
+  margin: 0 0 1rem;
 }
 
-/* ---- Header ---- */
-.site-header {
-  text-align: center;
-  padding: 40px 0 0;
+/* ---- Dark pill button (echoes claude.ai's "Try Claude") ---- */
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--btn);
+  color: var(--btn-fg);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1;
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 10px;
+  white-space: nowrap;
+  transition: background 0.15s ease, transform 0.15s ease;
 }
+.btn-dark:hover { background: var(--btn-hover); color: var(--btn-fg); border: 0; transform: translateY(-1px); }
+
+/* ---- Header / nav ---- */
+.site-header { padding: 22px 0; }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   font-family: var(--serif);
-  font-size: 1.15rem;
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 1.3rem;
   letter-spacing: -0.01em;
   color: var(--fg);
   border: 0;
+  font-variation-settings: "opsz" 40, "SOFT" 0, "WONK" 0;
 }
+.wordmark img { display: block; }
 
 /* ---- Hero ---- */
-.hero {
-  text-align: center;
-  padding: clamp(48px, 9vw, 96px) 0 clamp(40px, 7vw, 72px);
-}
+.hero { text-align: center; padding: clamp(56px, 10vw, 108px) 0 clamp(44px, 8vw, 80px); }
 
 /* Portrait product screen: rounded corners + soft shadow, centered on cream.
-   No device bezel (ADR-042). Doubles as the hero-crop spec for the #311 video. */
+   No device bezel (ADR-042) — the real app screenshot is the hero. */
 .hero-media {
-  width: min(300px, 72vw);
-  aspect-ratio: 9 / 19.5;
-  margin: clamp(36px, 6vw, 56px) auto 0;
-  border-radius: 34px;
+  width: min(330px, 76vw);
+  margin: clamp(40px, 6vw, 60px) auto 0;
+  border-radius: 30px;
   overflow: hidden;
   background: var(--surface);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow);  /* fallback for browsers without color-mix() */
+  box-shadow: var(--shadow), 0 0 0 1px color-mix(in srgb, var(--fg) 8%, transparent);
 }
-.hero-media video,
-.hero-media img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+.hero-media img { display: block; width: 100%; height: auto; }
 
 /* ---- App Store badge (official Apple artwork) ---- */
 .appstore {
   display: inline-flex;
-  margin-top: clamp(32px, 5vw, 44px);
+  margin-top: clamp(30px, 5vw, 42px);
   border: 0;
   border-radius: 9px;
-  transition: opacity 0.15s ease;
+  transition: opacity 0.15s ease, transform 0.15s ease;
 }
-.appstore:hover { opacity: 0.82; }
-.appstore img {
-  display: block;
-  height: 52px;
-  width: auto;
-}
+.appstore:hover { opacity: 0.85; transform: translateY(-1px); }
+.appstore img { display: block; height: 52px; width: auto; }
 
-/* ---- Generic section rhythm ---- */
-section { padding: clamp(40px, 7vw, 72px) 0; }
+/* ---- Section rhythm ---- */
+section { padding: clamp(48px, 8vw, 88px) 0; }
 .section-divider { border-top: 1px solid var(--line); }
 
-.how p { color: var(--fg); }
-.how .step-lead { font-family: var(--serif); }
+/* How it works + science intros read centered and airy, like claude.ai. */
+.how, .science { text-align: center; }
+.how p { max-width: 48ch; margin-left: auto; margin-right: auto; color: var(--fg); }
+.science > .wrap > p { max-width: 48ch; margin-left: auto; margin-right: auto; }
 
-/* ---- Science ---- */
+/* ---- Secondary product shot (focus timer in "How it works") ---- */
+.shot { width: min(290px, 68vw); margin: clamp(30px, 5vw, 46px) auto 0; }
+.shot img,
+.shot video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+  background: var(--surface);
+  box-shadow: var(--shadow);  /* fallback for browsers without color-mix() */
+  box-shadow: var(--shadow), 0 0 0 1px color-mix(in srgb, var(--fg) 8%, transparent);
+}
+.shot figcaption {
+  margin: 1.1rem auto 0;
+  max-width: 38ch;
+  font-size: 0.92rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ---- Features accordion (native <details>, no JS) ---- */
+.features { text-align: center; }
+.feature-list {
+  max-width: 600px;
+  margin: clamp(28px, 5vw, 46px) auto 0;
+  text-align: left;
+}
+.feature { border-top: 1px solid var(--line); }
+.feature:last-child { border-bottom: 1px solid var(--line); }
+
+.feature > summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: clamp(15px, 3vw, 21px) 2px;
+  cursor: pointer;
+  list-style: none;                 /* Firefox: drop the disclosure triangle */
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.12rem, 2.4vw, 1.3rem);
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+  color: var(--fg);
+  transition: color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.feature > summary::-webkit-details-marker { display: none; }   /* Safari/Chrome */
+.feature > summary:hover { color: var(--accent); }
+.feature > summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Chevron marker: points down when collapsed, flips up when open */
+.feature-marker {
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  margin-top: 0.4em;
+  border-right: 2px solid var(--faint);
+  border-bottom: 2px solid var(--faint);
+  border-radius: 1px;
+  transform: rotate(45deg);
+  transition: transform 0.22s ease, border-color 0.15s ease;
+}
+.feature[open] .feature-marker { transform: rotate(-135deg); }
+.feature > summary:hover .feature-marker { border-color: var(--accent); }
+
+.feature-body { padding: 0 2px clamp(18px, 4vw, 28px); }
+.feature-body p { color: var(--muted); margin: 0 0 0.4rem; }
+.feature-body .shot { margin-top: clamp(18px, 4vw, 28px); }
+.feature-soon {
+  font-size: 0.92rem;
+  font-style: italic;
+  color: var(--faint);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-marker { transition: border-color 0.15s ease; }
+}
+
+/* ---- Science claims ---- */
 .science .claims {
   list-style: none;
-  margin: 1.5rem 0 0;
+  max-width: 560px;
+  margin: 1.7rem auto 0;
   padding: 0;
+  text-align: left;
 }
 .science .claims li {
-  padding: 1.15rem 0;
+  padding: 1.2rem 0;
   border-top: 1px solid var(--line);
 }
 .science .claims li:last-child { border-bottom: 1px solid var(--line); }
-.science .claim {
-  margin: 0 0 0.3rem;
-  font-size: 1.06rem;
-}
-.science .cite {
-  margin: 0;
-  font-size: 0.88rem;
-  color: var(--muted);
-}
+.science .claim { margin: 0 0 0.3rem; font-size: 1.08rem; }
+.science .cite { margin: 0; font-size: 0.9rem; color: var(--muted); }
 .science .cite a { font-size: inherit; }
-.science-note {
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
-  color: var(--muted);
-}
+.science-note { margin-top: 1.7rem; font-size: 0.92rem; color: var(--faint); }
 
 /* ---- Footer ---- */
 .site-footer {
   text-align: center;
-  padding: 48px 0 64px;
+  padding: 56px 0 72px;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: 0.88rem;
 }
 .site-footer a { color: var(--muted); border-bottom-color: var(--line); }
 .site-footer a:hover { color: var(--fg); }
 .site-footer .links { margin-bottom: 0.6rem; }
 .site-footer .links a { margin: 0 10px; }
 
-/* ---- Motion preferences: don't autoplay the loop for reduced-motion users.
-   Paired with a tiny inline script that pauses the video. ---- */
 @media (prefers-reduced-motion: reduce) {
-  .appstore { transition: none; }
+  * { transition: none !important; }
+  /* Don't shift interactive elements on hover for reduced-motion users. */
+  .btn-dark:hover,
+  .appstore:hover { transform: none; }
 }

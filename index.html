@@ -23,20 +23,27 @@
   <meta name="twitter:description" content="A calm visual day planner on a 24-hour clock, with zero-touch auto-advance between focus blocks.">
   <meta name="twitter:image" content="https://slicefocus.app/og.png">
 
-  <meta name="theme-color" content="#f7f3eb" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#1a1714" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f0eee6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a1916" media="(prefers-color-scheme: dark)">
 
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!-- Type to echo claude.ai: Fraunces ≈ "Anthropic Serif", Inter ≈ "Anthropic Sans". -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400..600&display=swap">
 
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header">
-    <div class="wrap">
-      <span class="wordmark">
-        <img src="icon.svg" alt="" width="22" height="22" style="vertical-align:-4px;margin-right:7px">SliceFocus
-      </span>
+    <div class="shell nav">
+      <a class="wordmark" href="/">
+        <img src="icon.svg" alt="" width="26" height="26">SliceFocus
+      </a>
+      <a class="btn-dark" href="https://apps.apple.com/app/id6761280632">Get the app</a>
     </div>
   </header>
 
@@ -51,24 +58,18 @@
           between tasks.
         </p>
 
-        <!-- Portrait product screen: rounded corners + soft shadow, no device bezel.
-             TODO(#311): drop in the 15-sec silent radial auto-advance clip as
-             hero.mp4 / hero.webm. Until those files exist, the poster placeholder
-             (hero-poster.png) shows. This frame is the hero-crop spec for #311:
-             portrait 9:19.5. -->
+        <!-- Real product screenshot: the 24-hour radial day view. Rounded corners
+             + soft shadow, no device bezel (ADR-042: show the real product, not an
+             illustration). #311 will produce a silent auto-advance clip that can
+             later replace this <img> with a matching-crop <video>. -->
         <div class="hero-media">
-          <video poster="hero-poster.png" autoplay loop muted playsinline
-                 preload="metadata"
-                 aria-label="The SliceFocus radial timer auto-advancing between time blocks">
-            <source src="hero.webm" type="video/webm">
-            <source src="hero.mp4" type="video/mp4">
-          </video>
+          <img src="screen-day.png" width="760" height="1543"
+               alt="The SliceFocus 24-hour radial day view: a colorful pie chart of the day's time blocks above a scrollable schedule.">
         </div>
 
-        <!-- App Store badge — official Apple artwork.
-             TODO: replace the href with the live App Store product URL
-             (https://apps.apple.com/app/idXXXXXXXXXX) before this page goes public. -->
-        <a class="appstore" href="https://apps.apple.com/app/slicefocus/id000000000"
+        <!-- App Store badge — official Apple artwork. Country-agnostic link:
+             Apple geo-redirects each visitor to their local storefront. -->
+        <a class="appstore" href="https://apps.apple.com/app/id6761280632"
            aria-label="Download SliceFocus on the App Store">
           <img src="download-on-the-app-store.svg" alt="Download on the App Store"
                width="156" height="52">
@@ -91,6 +92,149 @@
           no “start” button to find — you just keep working while the clock moves
           underneath you.
         </p>
+
+        <figure class="shot">
+          <img src="screen-focus.png" width="760" height="1495"
+               alt="A SliceFocus focus session: the Reading and Studying block with a 24:28 Pomodoro countdown, a WORK label, cycle 1 of 4, and Stop and Pause controls.">
+          <figcaption>
+            A block running its built-in Pomodoro timer — when its time is up, the
+            next block takes over automatically.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===== Features ===== -->
+    <!-- Native <details>/<summary> accordion: no JS, keyboard-accessible, and
+         degrades gracefully. Each <details> is one "beat" (feature) and stays
+         collapsed by default. Every beat carries copy plus a click-to-play,
+         lazy-loaded (preload="none") demo video inside a <figure class="shot">. -->
+    <section class="features section-divider">
+      <div class="wrap">
+        <p class="eyebrow">Features</p>
+        <h2>One quiet app, a few good things.</h2>
+
+        <div class="feature-list">
+          <details class="feature">
+            <summary>
+              <span class="feature-title">Plan on a 24-hour radial canvas</span>
+              <span class="feature-marker" aria-hidden="true"></span>
+            </summary>
+            <div class="feature-body">
+              <p>
+                Sketch your whole day as colored blocks on a single clock face —
+                one glance shows where your time actually goes.
+              </p>
+              <figure class="shot">
+                <video controls playsinline loop preload="none"
+                       poster="beat1-planning-poster.jpg" width="1080" height="2196">
+                  <source src="beat1-planning.mp4" type="video/mp4">
+                  Your browser doesn’t support video playback.
+                </video>
+              </figure>
+            </div>
+          </details>
+
+          <details class="feature">
+            <summary>
+              <span class="feature-title">A built-in Pomodoro for deep work</span>
+              <span class="feature-marker" aria-hidden="true"></span>
+            </summary>
+            <div class="feature-body">
+              <p>
+                Tap any block to start a focus session. Set your work and break
+                lengths once; the countdown keeps you in the zone.
+              </p>
+              <figure class="shot">
+                <video controls playsinline loop preload="none"
+                       poster="beat2-pomodoro-poster.jpg" width="1080" height="2196">
+                  <source src="beat2-pomodoro.mp4" type="video/mp4">
+                  Your browser doesn’t support video playback.
+                </video>
+              </figure>
+            </div>
+          </details>
+
+          <details class="feature">
+            <summary>
+              <span class="feature-title">A timer that runs on your lock screen</span>
+              <span class="feature-marker" aria-hidden="true"></span>
+            </summary>
+            <div class="feature-body">
+              <p>
+                Lock your phone and the countdown keeps going, right on the lock
+                screen — no need to keep the app open or awake.
+              </p>
+              <figure class="shot">
+                <video controls playsinline loop preload="none"
+                       poster="beat3-lockscreen-poster.jpg" width="1080" height="2196">
+                  <source src="beat3-lockscreen.mp4" type="video/mp4">
+                  Your browser doesn’t support video playback.
+                </video>
+              </figure>
+            </div>
+          </details>
+
+          <details class="feature">
+            <summary>
+              <span class="feature-title">Gentle session &amp; break nudges</span>
+              <span class="feature-marker" aria-hidden="true"></span>
+            </summary>
+            <div class="feature-body">
+              <p>
+                When a focus stretch ends, a calm notification hands you your
+                break — then starts the next block on its own.
+              </p>
+              <figure class="shot">
+                <video controls playsinline loop preload="none"
+                       poster="beat4-notifications-poster.jpg" width="1080" height="2196">
+                  <source src="beat4-notifications.mp4" type="video/mp4">
+                  Your browser doesn’t support video playback.
+                </video>
+              </figure>
+            </div>
+          </details>
+
+          <details class="feature">
+            <summary>
+              <span class="feature-title">Planned vs. actual</span>
+              <span class="feature-marker" aria-hidden="true"></span>
+            </summary>
+            <div class="feature-body">
+              <p>
+                See how your real day stacked up against your plan, with the time
+                you actually spent laid over what you intended.
+              </p>
+              <figure class="shot">
+                <video controls playsinline loop preload="none"
+                       poster="beat5-planned-actual-poster.jpg" width="1080" height="2196">
+                  <source src="beat5-planned-actual.mp4" type="video/mp4">
+                  Your browser doesn’t support video playback.
+                </video>
+              </figure>
+            </div>
+          </details>
+
+          <details class="feature">
+            <summary>
+              <span class="feature-title">Trends &amp; analytics</span>
+              <span class="feature-marker" aria-hidden="true"></span>
+            </summary>
+            <div class="feature-body">
+              <p>
+                Watch your focus minutes add up over the week and spot the
+                patterns in how you spend your time.
+              </p>
+              <figure class="shot">
+                <video controls playsinline loop preload="none"
+                       poster="beat6-trends-poster.jpg" width="1080" height="2196">
+                  <source src="beat6-trends.mp4" type="video/mp4">
+                  Your browser doesn’t support video playback.
+                </video>
+              </figure>
+            </div>
+          </details>
+        </div>
       </div>
     </section>
 
@@ -163,21 +307,11 @@
   <footer class="site-footer">
     <div class="wrap">
       <p class="links">
-        <a href="https://apps.apple.com/app/slicefocus/id000000000">App Store</a>
+        <a href="https://apps.apple.com/app/id6761280632">App Store</a>
+        <a href="https://github.com/AnunnakiCosmoCrew">GitHub</a>
       </p>
-      <p>© 2026 Mert Ertugrul · SliceFocus</p>
+      <p>© 2026 <a href="https://github.com/AnunnakiCosmoCrew">AnunnakiCosmoCrew</a> · SliceFocus</p>
     </div>
   </footer>
-
-  <script>
-    // Respect reduced-motion: don't autoplay the looping hero for users who ask
-    // for less motion — leave the poster frame showing instead.
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.querySelectorAll('video[autoplay]').forEach(function (v) {
-        v.removeAttribute('autoplay');
-        v.pause();
-      });
-    }
-  </script>
 </body>
 </html>
