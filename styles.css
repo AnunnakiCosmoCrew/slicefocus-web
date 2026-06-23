@@ -169,7 +169,8 @@ section { padding: clamp(48px, 8vw, 88px) 0; }
 
 /* ---- Secondary product shot (focus timer in "How it works") ---- */
 .shot { width: min(290px, 68vw); margin: clamp(30px, 5vw, 46px) auto 0; }
-.shot img {
+.shot img,
+.shot video {
   display: block;
   width: 100%;
   height: auto;
@@ -183,6 +184,69 @@ section { padding: clamp(48px, 8vw, 88px) 0; }
   font-size: 0.92rem;
   color: var(--muted);
   line-height: 1.5;
+}
+
+/* ---- Features accordion (native <details>, no JS) ---- */
+.features { text-align: center; }
+.feature-list {
+  max-width: 600px;
+  margin: clamp(28px, 5vw, 46px) auto 0;
+  text-align: left;
+}
+.feature { border-top: 1px solid var(--line); }
+.feature:last-child { border-bottom: 1px solid var(--line); }
+
+.feature > summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: clamp(15px, 3vw, 21px) 2px;
+  cursor: pointer;
+  list-style: none;                 /* Firefox: drop the disclosure triangle */
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.12rem, 2.4vw, 1.3rem);
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+  color: var(--fg);
+  transition: color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.feature > summary::-webkit-details-marker { display: none; }   /* Safari/Chrome */
+.feature > summary:hover { color: var(--accent); }
+.feature > summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Chevron marker: points down when collapsed, flips up when open */
+.feature-marker {
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  margin-top: 0.4em;
+  border-right: 2px solid var(--faint);
+  border-bottom: 2px solid var(--faint);
+  border-radius: 1px;
+  transform: rotate(45deg);
+  transition: transform 0.22s ease, border-color 0.15s ease;
+}
+.feature[open] .feature-marker { transform: rotate(-135deg); }
+.feature > summary:hover .feature-marker { border-color: var(--accent); }
+
+.feature-body { padding: 0 2px clamp(18px, 4vw, 28px); }
+.feature-body p { color: var(--muted); margin: 0 0 0.4rem; }
+.feature-body .shot { margin-top: clamp(18px, 4vw, 28px); }
+.feature-soon {
+  font-size: 0.92rem;
+  font-style: italic;
+  color: var(--faint);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-marker { transition: border-color 0.15s ease; }
 }
 
 /* ---- Science claims ---- */

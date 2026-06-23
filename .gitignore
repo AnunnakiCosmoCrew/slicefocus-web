@@ -1,0 +1,6 @@
+# macOS
+.DS_Store
+
+# Marketing source footage — large masters/edits live here, not in the deployed site.
+# Only the web-optimized exports (copied into the repo root) get committed.
+marketting assests/
