@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>SliceFocus — plan your day on a clock. It runs itself.</title>
-  <meta name="description" content="SliceFocus lays your day out on a 24-hour clock and advances from one focus block to the next on its own — no timers to start, no taps between tasks. A calm visual day planner with a built-in Pomodoro timer.">
+  <meta name="description" content="SliceFocus lays your day out on a 24-hour clock and advances from one focus block to the next on its own — no timers to start, no taps between tasks. A calm visual day planner with a built-in Pomodoro timer, on iPhone and Mac.">
   <link rel="canonical" href="https://slicefocus.app/">
 
   <!-- Open Graph / Twitter — the click magnet for Reddit (#313) / HN (#314) posts. -->
@@ -59,13 +59,21 @@
           between tasks.
         </p>
 
-        <!-- Real product screenshot: the 24-hour radial day view. Rounded corners
-             + soft shadow, no device bezel (ADR-042: show the real product, not an
-             illustration). #311 will produce a silent auto-advance clip that can
-             later replace this <img> with a matching-crop <video>. -->
+        <!-- Real product screenshot: the 24-hour radial day view. No device bezel
+             (ADR-042: show the real product, not an illustration). Responsive per
+             viewport — only ONE image downloads:
+               • ≥760px (laptop/desktop): the macOS window shot (screen-mac.png).
+                 The PNG already carries its own window chrome + drop shadow, so
+                 .hero-media drops its CSS frame at that breakpoint (see styles.css).
+               • <760px (phone/fallback): the portrait iPhone shot (screen-day.png),
+                 framed with rounded corners + soft shadow. -->
         <div class="hero-media">
-          <img src="screen-day.png" width="760" height="1543"
-               alt="The SliceFocus 24-hour radial day view: a colorful pie chart of the day's time blocks above a scrollable schedule.">
+          <picture>
+            <source media="(min-width: 760px)" srcset="screen-mac.png"
+                    width="1125" height="1162">
+            <img src="screen-day.png" width="760" height="1543"
+                 alt="SliceFocus showing a full day planned on the 24-hour radial clock — from Night Sleep through the day's focus blocks, with a live time marker.">
+          </picture>
         </div>
 
         <!-- App Store badge — official Apple artwork. Country-agnostic link:
@@ -75,6 +83,7 @@
           <img src="download-on-the-app-store.svg" alt="Download on the App Store"
                width="156" height="52">
         </a>
+        <p class="hero-platforms">One app for iPhone and Mac.</p>
       </div>
     </section>
 
@@ -172,6 +181,32 @@
                   <source src="beat3-lockscreen.mp4" type="video/mp4">
                   Your browser doesn’t support video playback.
                 </video>
+              </figure>
+            </div>
+          </details>
+
+          <details class="feature">
+            <summary>
+              <span class="feature-title">On Mac, a Pomodoro timer in your menu bar</span>
+              <span class="feature-marker" aria-hidden="true"></span>
+            </summary>
+            <div class="feature-body">
+              <p>
+                SliceFocus runs on your Mac too. The active block’s countdown
+                lives in the menu bar, so your remaining focus time stays in
+                sight while you work — no window to keep open.
+              </p>
+              <p>
+                The label shows your Pomodoro cycle and time left: “C1 24:05”
+                means you’re in cycle 1 with 24:05 to go.
+              </p>
+              <!-- Real macOS menu bar, captured live. Other apps are blurred for
+                   focus + privacy; the SliceFocus timer "C1 24:05" is kept sharp
+                   and ringed. Shadow + rounded corners are baked into the PNG. -->
+              <figure class="menubar-shot">
+                <img src="screen-menubar.png" width="1135" height="282"
+                     alt="The SliceFocus Pomodoro timer “C1 24:05” shown enlarged — cycle 1, 24 minutes 5 seconds left — above the macOS menu bar where it lives, beside the system clock.">
+                <figcaption>The active block’s countdown sits in your Mac menu bar, always in view.</figcaption>
               </figure>
             </div>
           </details>
