@@ -4,6 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Google Analytics 4 — slicefocus.app marketing-site funnel telemetry (MER-324).
+       Dedicated web stream (G-VBK98EW3WQ), separate from the app builds. The Consent
+       Mode v2 hook is present so a consent banner can be added later (ADR-044) without
+       touching this block. page_view is sent automatically by the config call below. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBK98EW3WQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('consent', 'default', { analytics_storage: 'granted' });
+    gtag('config', 'G-VBK98EW3WQ');
+  </script>
+
   <title>SliceFocus — plan your day on a clock. It runs itself.</title>
   <meta name="description" content="SliceFocus lays your day out on a 24-hour clock and advances from one focus block to the next on its own — no timers to start, no taps between tasks. A calm visual day planner with a built-in Pomodoro timer, on iPhone and Mac.">
   <link rel="canonical" href="https://slicefocus.app/">
@@ -43,7 +56,7 @@
       <a class="wordmark" href="/">
         <img src="icon.svg" alt="" width="26" height="26">SliceFocus
       </a>
-      <a class="btn-dark" href="https://apps.apple.com/app/id6761280632">Get the app</a>
+      <a class="btn-dark" href="https://apps.apple.com/app/id6761280632" data-loc="header">Get the app</a>
     </div>
   </header>
 
@@ -79,7 +92,7 @@
         <!-- App Store badge — official Apple artwork. Country-agnostic link:
              Apple geo-redirects each visitor to their local storefront. -->
         <a class="appstore" href="https://apps.apple.com/app/id6761280632"
-           aria-label="Download SliceFocus on the App Store">
+           data-loc="hero" aria-label="Download SliceFocus on the App Store">
           <img src="download-on-the-app-store.svg" alt="Download on the App Store"
                width="156" height="52">
         </a>
@@ -362,11 +375,42 @@
   <footer class="site-footer">
     <div class="wrap">
       <p class="links">
-        <a href="https://apps.apple.com/app/id6761280632">App Store</a>
+        <a href="https://apps.apple.com/app/id6761280632" data-loc="footer">App Store</a>
         <a href="https://github.com/AnunnakiCosmoCrew">GitHub</a>
+        <a href="https://anunnakicosmocrew.github.io/slicefocus-docs/legal/privacy-policy">Privacy</a>
       </p>
+      <p class="fineprint">slicefocus.app uses privacy-friendly analytics to count visits and App&nbsp;Store clicks — no cross-site tracking, no ads.</p>
       <p>© 2026 <a href="https://github.com/AnunnakiCosmoCrew">AnunnakiCosmoCrew</a> · SliceFocus</p>
     </div>
   </footer>
+
+  <!-- Funnel telemetry (MER-324): fire app_store_click before navigation, and stamp
+       every App Store link with an Apple campaign token (ct) derived from the inbound
+       ?utm_source, so App Store Connect can split downloads by channel (Reddit / HN /
+       organic). Links stay bare in source; the token is applied at runtime. -->
+  <script>
+    (function () {
+      var STORE = 'apps.apple.com';
+      // ?utm_source=reddit_pomodoro  ->  ct=reddit_pomodoro ; default 'web'.
+      var src = (new URLSearchParams(location.search).get('utm_source') || '')
+                  .toLowerCase().replace(/[^a-z0-9_]/g, '');
+      var ct = src || 'web';
+
+      document.querySelectorAll('a[href*="' + STORE + '"]').forEach(function (a) {
+        try { var u = new URL(a.href); u.searchParams.set('ct', ct); a.href = u.toString(); }
+        catch (e) { /* leave href untouched if it can't be parsed */ }
+      });
+
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href*="' + STORE + '"]');
+        if (!a || typeof gtag !== 'function') return;
+        gtag('event', 'app_store_click', {
+          link_location: a.getAttribute('data-loc') || 'unknown',
+          campaign: ct,
+          transport_type: 'beacon'
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
