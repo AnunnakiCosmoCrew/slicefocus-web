@@ -284,6 +284,7 @@ section { padding: clamp(48px, 8vw, 88px) 0; }
   color: var(--muted);
   line-height: 1.5;
 }
+/* ---- Science claims ---- */
 .science .claims {
   list-style: none;
   max-width: 560px;
