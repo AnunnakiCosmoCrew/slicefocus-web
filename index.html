@@ -117,10 +117,6 @@
           underneath you. Start on your Mac and the same session is on your
           iPhone; start on your phone and the Mac picks it up.
         </p>
-        <p>
-          And while a work phase runs, the apps and websites you chose to keep
-          out stay out: Focus Shield holds them back until the break.
-        </p>
 
         <figure class="shot">
           <img src="screen-focus.png" width="760" height="1495"
@@ -134,269 +130,94 @@
     </section>
 
     <!-- ===== Features ===== -->
-    <!-- Native <details>/<summary> accordion: no JS, keyboard-accessible, and
-         degrades gracefully. Each <details> is one "beat" (feature) and stays
-         collapsed by default. Most beats carry copy plus a click-to-play,
-         lazy-loaded (preload="none") demo video inside a <figure class="shot">;
-         newer beats (categories, calendar, soundscapes) are copy-only until
-         demo videos exist for them. -->
+    <!-- Three open beats, no accordion: the three claims a visitor should leave
+         with (Shu & Carlson 2014: impressions peak at three claims and drop at
+         the fourth; NN/g: don't hide content most visitors need). Everything
+         else is one secondary list below. Order set by the founder: planning,
+         one session on every device, Focus Shield. -->
     <section class="features section-divider">
       <div class="wrap">
         <p class="eyebrow">Features</p>
-        <h2>Everything you need to follow your day, in one quiet app.</h2>
+        <h2>Plan it. Carry it anywhere. Keep the noise out.</h2>
 
-        <div class="feature-list">
-          <details class="feature">
-            <summary>
-              <span class="feature-title">Plan on a 24-hour radial canvas</span>
-              <span class="feature-marker" aria-hidden="true"></span>
-            </summary>
-            <div class="feature-body">
-              <p>
-                Sketch your whole day as colored blocks on a single clock face —
-                one glance shows where your time actually goes.
-              </p>
-              <figure class="shot">
-                <video controls playsinline loop preload="none"
-                       poster="beat1-planning-poster.jpg" width="1080" height="2196">
-                  <source src="beat1-planning.mp4" type="video/mp4">
-                  Your browser doesn’t support video playback.
-                </video>
-              </figure>
-            </div>
-          </details>
+        <div class="beats">
+          <article class="beat">
+            <h3>Plan your day on a clock</h3>
+            <p>
+              Sketch your whole day as colored blocks on a single 24-hour face.
+              One glance shows where your time actually goes, and the empty
+              gaps show where it doesn’t.
+            </p>
+            <figure class="shot">
+              <video controls playsinline loop preload="none"
+                     poster="beat1-planning-poster.jpg" width="1080" height="2196">
+                <source src="beat1-planning.mp4" type="video/mp4">
+                Your browser doesn’t support video playback.
+              </video>
+            </figure>
+          </article>
 
-          <details class="feature">
-            <summary>
-              <span class="feature-title">Your day, in your own categories</span>
-              <span class="feature-marker" aria-hidden="true"></span>
-            </summary>
-            <div class="feature-body">
-              <p>
-                Group your blocks into categories you create — name, color, and
-                emoji included. Tag a block with more than one, start from a
-                curated starter pack, and your categories follow you across
-                devices.
-              </p>
-              <figure class="shot">
-                <img src="screen-categories.png" width="760" height="1403"
-                     alt="The Manage Categories screen in SliceFocus, listing color-and-emoji categories like Break, Creative, Deep Work, Focus, Gym, and Study, each with edit and delete controls.">
-              </figure>
-            </div>
-          </details>
+          <article class="beat">
+            <h3>One timer, every device</h3>
+            <p>
+              A focus session belongs to you, not to the device you started it
+              on. Start on the Mac and your iPhone shows the same session; pause,
+              skip or stop on either and the other follows. Work hands over to
+              break and back everywhere at once.
+            </p>
+            <p>
+              Leave your desk for the break and take the timer with you: the
+              countdown sits on your phone’s lock screen, a notification tells
+              you when the break is over, and the Mac menu bar is showing the
+              same session when you get back.
+            </p>
+            <figure class="shot">
+              <video controls playsinline loop preload="none"
+                     poster="beat3-lockscreen-poster.jpg" width="1080" height="2196">
+                <source src="beat3-lockscreen.mp4" type="video/mp4">
+                Your browser doesn’t support video playback.
+              </video>
+            </figure>
+            <!-- Real macOS menu bar, captured live. Other apps are blurred for
+                 focus + privacy; the SliceFocus timer "C1 24:05" is kept sharp
+                 and ringed. Shadow + rounded corners are baked into the PNG. -->
+            <figure class="menubar-shot">
+              <img src="screen-menubar.png" width="1135" height="282"
+                   alt="The SliceFocus Pomodoro timer “C1 24:05” shown enlarged — cycle 1, 24 minutes 5 seconds left — above the macOS menu bar where it lives, beside the system clock.">
+              <figcaption>The same session, in your Mac menu bar: cycle 1, 24:05 to go.</figcaption>
+            </figure>
+          </article>
 
-          <details class="feature">
-            <summary>
-              <span class="feature-title">Works with your calendar</span>
-              <span class="feature-marker" aria-hidden="true"></span>
-            </summary>
-            <div class="feature-body">
-              <p>
-                Events from your system calendar appear right on the clock, so
-                you plan around what’s already booked. It goes the other way
-                too: export your planned blocks to any calendar you choose, and
-                edits you make in the Calendar app flow back into SliceFocus.
-              </p>
-              <p>
-                You can also have a reminder created automatically every time
-                you save a block.
-              </p>
-            </div>
-          </details>
+          <article class="beat">
+            <h3>Focus Shield: your distractions, out of reach</h3>
+            <p>
+              Pick the apps and websites that pull you away. During every work
+              phase they stay out of reach; every break lets them back in. A
+              session started on your iPhone shields your Mac too, and the
+              other way round.
+            </p>
+            <p>
+              On iPhone and iPad, Focus Shield uses Screen Time, so the apps,
+              categories and sites you pick are blocked system-wide. On the Mac,
+              a Safari extension blocks your listed websites, and switching to a
+              listed app brings up a shield window instead. An extension for
+              Chrome is on its way to the Chrome Web Store.
+            </p>
+          </article>
+        </div>
 
-          <details class="feature">
-            <summary>
-              <span class="feature-title">A built-in Pomodoro for deep work</span>
-              <span class="feature-marker" aria-hidden="true"></span>
-            </summary>
-            <div class="feature-body">
-              <p>
-                Tap any block to start a focus session. Set your work and break
-                lengths once; the countdown keeps you in the zone, and work hands
-                over to break and back on its own — on every device and on the
-                lock screen. Prefer to confirm each phase yourself? Turn
-                auto-advance off in Settings.
-              </p>
-              <figure class="shot">
-                <video controls playsinline loop preload="none"
-                       poster="beat2-pomodoro-poster.jpg" width="1080" height="2196">
-                  <source src="beat2-pomodoro.mp4" type="video/mp4">
-                  Your browser doesn’t support video playback.
-                </video>
-              </figure>
-            </div>
-          </details>
-
-          <details class="feature">
-            <summary>
-              <span class="feature-title">One timer, every device</span>
-              <span class="feature-marker" aria-hidden="true"></span>
-            </summary>
-            <div class="feature-body">
-              <p>
-                A focus session belongs to your account, not to the device you
-                started it on. Start on the Mac and your iPhone shows the same
-                session; pause, skip or stop on either and the other follows.
-                Work hands over to break and back everywhere at once, lock
-                screen included.
-              </p>
-              <p>
-                Leave your desk for the break and take the timer with you: the
-                countdown sits on your phone’s lock screen, a notification tells
-                you when the break is over, and the Mac menu bar is showing the
-                same session when you get back.
-              </p>
-            </div>
-          </details>
-
-          <details class="feature">
-            <summary>
-              <span class="feature-title">Focus Shield: your distractions, out of reach</span>
-              <span class="feature-marker" aria-hidden="true"></span>
-            </summary>
-            <div class="feature-body">
-              <p>
-                Pick the apps and websites that pull you away. During every work
-                phase they stay out of reach; every break lets them back in. A
-                session started on your iPhone shields your Mac too, and the
-                other way round.
-              </p>
-              <p>
-                On iPhone and iPad, Focus Shield uses Screen Time, so the apps,
-                categories and sites you pick are blocked system-wide. On the Mac,
-                a Safari extension blocks your listed websites, and switching to a
-                listed app brings up a shield window instead. An extension for
-                Chrome is on its way to the Chrome Web Store.
-              </p>
-            </div>
-          </details>
-
-          <details class="feature">
-            <summary>
-              <span class="feature-title">Soundscapes that keep you under</span>
-              <span class="feature-marker" aria-hidden="true"></span>
-            </summary>
-            <div class="feature-body">
-              <p>
-                White, brown, and pink noise, built into every session. Preview
-                each sound before you pick, switch mid-session right from the
-                timer, and when you pause the timer the sound pauses with it.
-              </p>
-            </div>
-          </details>
-
-          <details class="feature">
-            <summary>
-              <span class="feature-title">A timer that runs on your lock screen</span>
-              <span class="feature-marker" aria-hidden="true"></span>
-            </summary>
-            <div class="feature-body">
-              <p>
-                Lock your phone and the countdown keeps going, right on the lock
-                screen — no need to keep the app open or awake.
-              </p>
-              <figure class="shot">
-                <video controls playsinline loop preload="none"
-                       poster="beat3-lockscreen-poster.jpg" width="1080" height="2196">
-                  <source src="beat3-lockscreen.mp4" type="video/mp4">
-                  Your browser doesn’t support video playback.
-                </video>
-              </figure>
-            </div>
-          </details>
-
-          <details class="feature">
-            <summary>
-              <span class="feature-title">On Mac, a Pomodoro timer in your menu bar</span>
-              <span class="feature-marker" aria-hidden="true"></span>
-            </summary>
-            <div class="feature-body">
-              <p>
-                SliceFocus runs on your Mac too. The active block’s countdown
-                lives in the menu bar, so your remaining focus time stays in
-                sight while you work — no window to keep open. With Focus Shield
-                on, closing the window keeps SliceFocus running in the menu bar,
-                so a session started on your phone still shields your Mac.
-              </p>
-              <p>
-                The label shows your Pomodoro cycle and time left: “C1 24:05”
-                means you’re in cycle 1 with 24:05 to go.
-              </p>
-              <!-- Real macOS menu bar, captured live. Other apps are blurred for
-                   focus + privacy; the SliceFocus timer "C1 24:05" is kept sharp
-                   and ringed. Shadow + rounded corners are baked into the PNG. -->
-              <figure class="menubar-shot">
-                <img src="screen-menubar.png" width="1135" height="282"
-                     alt="The SliceFocus Pomodoro timer “C1 24:05” shown enlarged — cycle 1, 24 minutes 5 seconds left — above the macOS menu bar where it lives, beside the system clock.">
-                <figcaption>The active block’s countdown sits in your Mac menu bar, always in view.</figcaption>
-              </figure>
-            </div>
-          </details>
-
-          <details class="feature">
-            <summary>
-              <span class="feature-title">Gentle session &amp; break nudges</span>
-              <span class="feature-marker" aria-hidden="true"></span>
-            </summary>
-            <div class="feature-body">
-              <p>
-                When a focus stretch ends, a calm notification hands you your
-                break — then starts the next block on its own.
-              </p>
-              <p>
-                Once a week, a recap lands with your focus summary — tap it to
-                see how the week actually went. Both are optional and live in
-                Settings.
-              </p>
-              <figure class="shot">
-                <video controls playsinline loop preload="none"
-                       poster="beat4-notifications-poster.jpg" width="1080" height="2196">
-                  <source src="beat4-notifications.mp4" type="video/mp4">
-                  Your browser doesn’t support video playback.
-                </video>
-              </figure>
-            </div>
-          </details>
-
-          <details class="feature">
-            <summary>
-              <span class="feature-title">Planned vs. actual</span>
-              <span class="feature-marker" aria-hidden="true"></span>
-            </summary>
-            <div class="feature-body">
-              <p>
-                See how your real day stacked up against your plan, with the time
-                you actually spent laid over what you intended.
-              </p>
-              <figure class="shot">
-                <video controls playsinline loop preload="none"
-                       poster="beat5-planned-actual-poster.jpg" width="1080" height="2196">
-                  <source src="beat5-planned-actual.mp4" type="video/mp4">
-                  Your browser doesn’t support video playback.
-                </video>
-              </figure>
-            </div>
-          </details>
-
-          <details class="feature">
-            <summary>
-              <span class="feature-title">Trends &amp; analytics</span>
-              <span class="feature-marker" aria-hidden="true"></span>
-            </summary>
-            <div class="feature-body">
-              <p>
-                Watch your focus minutes add up over the week, split them by
-                category, and spot the patterns in how you spend your time.
-              </p>
-              <figure class="shot">
-                <video controls playsinline loop preload="none"
-                       poster="beat6-trends-poster.jpg" width="1080" height="2196">
-                  <source src="beat6-trends.mp4" type="video/mp4">
-                  Your browser doesn’t support video playback.
-                </video>
-              </figure>
-            </div>
-          </details>
+        <!-- Secondary information, deliberately not claims: one list, no accordion. -->
+        <div class="also">
+          <h3 class="also-title">Also in the app</h3>
+          <ul class="also-list">
+            <li><strong>Categories.</strong> Name, color and emoji; tag a block with more than one; they follow you across devices.</li>
+            <li><strong>Calendar &amp; reminders.</strong> Your calendar events on the clock, planned blocks exported to any calendar, and an optional reminder before each block.</li>
+            <li><strong>Pomodoro, your way.</strong> Set work and break lengths once. Prefer to confirm each phase yourself? Turn auto-advance off in Settings.</li>
+            <li><strong>Soundscapes.</strong> White, brown and pink noise in every session; switch mid-session, pauses with the timer.</li>
+            <li><strong>Gentle nudges.</strong> A calm notification when a phase ends, and an optional weekly recap.</li>
+            <li><strong>Planned vs. actual.</strong> The time you spent laid over what you intended.</li>
+            <li><strong>Trends.</strong> Focus minutes over the week, split by category.</li>
+          </ul>
         </div>
       </div>
     </section>
