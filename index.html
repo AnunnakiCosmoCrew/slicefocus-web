@@ -92,8 +92,10 @@
                muted, looping, ≥760px only; the screenshot above stays as the poster until
                the clip has played. No `autoplay` attribute on purpose: the script below
                starts it, so reduced-motion and save-data visitors never get a frame of
-               motion or a byte of video. Without JS the screenshot simply stays. -->
-          <video class="hero-video" muted loop playsinline preload="metadata"
+               motion or a byte of video (preload="none"; the script only raises it to
+               "metadata" when the visitor will actually get the loop). Without JS the
+               screenshot simply stays. -->
+          <video class="hero-video" muted loop playsinline preload="none"
                  width="1440" height="900" aria-hidden="true" tabindex="-1">
             <source src="hero.webm" type="video/webm" media="(min-width: 760px)">
             <source src="hero.mp4" type="video/mp4" media="(min-width: 760px)">
@@ -381,6 +383,11 @@
         var c = navigator.connection;
         return reduce.matches || !!(c && c.saveData);
       }
+      // MediaQueryList.addEventListener is missing before Safari 14.
+      function onChange(mq, fn) {
+        if (mq.addEventListener) mq.addEventListener('change', fn);
+        else if (mq.addListener) mq.addListener(fn);
+      }
       function tryPlay(v) {
         var p = v.play();
         if (p && p.catch) p.catch(function () {});
@@ -406,15 +413,21 @@
           else if (!go && !v.paused) v.pause();
         }
         v.addEventListener('playing', function () { media.classList.add('is-playing'); });
-        // The button appears once there is a clip to control; it stays hidden when
-        // hero.webm / hero.mp4 are missing or fail to load.
+        // The button appears once there is a clip to control (or straight away for a
+        // visitor who isn't autoplaying, who has loaded nothing yet) and goes away
+        // again if hero.webm / hero.mp4 are missing or fail to load.
         v.addEventListener('loadedmetadata', function () { btn.hidden = false; });
+        v.querySelectorAll('source').forEach(function (src) {
+          src.addEventListener('error', function () {
+            if (src === v.lastElementChild) { btn.hidden = true; wanted = false; label(); }
+          });
+        });
         btn.addEventListener('click', function () { wanted = !wanted; label(); sync(); });
-        reduce.addEventListener('change', function () {
+        onChange(reduce, function () {
           if (reduce.matches) { wanted = false; label(); }
           sync();
         });
-        wide.addEventListener('change', sync);
+        onChange(wide, sync);
         document.addEventListener('visibilitychange', sync);
         if ('IntersectionObserver' in window) {
           new IntersectionObserver(function (entries) {
@@ -423,6 +436,9 @@
           }).observe(media);
         }
         label();
+        if (wide.matches) {
+          if (wanted) v.preload = 'metadata'; else btn.hidden = false;
+        }
         sync();
       })();
 
