@@ -85,9 +85,26 @@
           <picture>
             <source media="(min-width: 760px)" srcset="screen-mac.png"
                     width="1125" height="1162">
-            <img src="screen-day.png" width="760" height="1543"
+            <img src="screen-day.png" width="760" height="1543" fetchpriority="high"
                  alt="SliceFocus showing a full day planned on the 24-hour radial clock — from Night Sleep through the day's focus blocks, with a live time marker.">
           </picture>
+          <!-- Hero loop (plan: slicefocus-docs/plans/site-feature-videos.md §4). Silent,
+               muted, looping, ≥760px only; the screenshot above stays as the poster until
+               the clip has played. No `autoplay` attribute on purpose: the script below
+               starts it, so reduced-motion and save-data visitors never get a frame of
+               motion or a byte of video (preload="none"; the script only raises it to
+               "metadata" when the visitor will actually get the loop). Without JS the
+               screenshot simply stays. -->
+          <video class="hero-video" muted loop playsinline preload="none"
+                 width="1440" height="900" aria-hidden="true" tabindex="-1">
+            <source src="hero.webm" type="video/webm" media="(min-width: 760px)">
+            <source src="hero.mp4" type="video/mp4" media="(min-width: 760px)">
+          </video>
+          <button class="media-toggle" type="button" hidden
+                  aria-label="Pause the demo video" data-state="playing">
+            <svg class="icon-pause" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>
+            <svg class="icon-play" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
+          </button>
         </div>
 
         <!-- App Store badge — official Apple artwork. Country-agnostic link:
@@ -149,11 +166,12 @@
               gaps show where it doesn’t.
             </p>
             <figure class="shot">
-              <video controls playsinline loop preload="none"
+              <video controls muted playsinline loop preload="none"
                      poster="beat1-planning-poster.jpg" width="1080" height="2196">
                 <source src="beat1-planning.mp4" type="video/mp4">
                 Your browser doesn’t support video playback.
               </video>
+              <figcaption>A day sketched as colored blocks on the 24-hour clock.</figcaption>
             </figure>
           </article>
 
@@ -172,11 +190,12 @@
               Mac menu bar is showing the same session when you get back.
             </p>
             <figure class="shot">
-              <video controls playsinline loop preload="none"
+              <video controls muted playsinline loop preload="none"
                      poster="beat3-lockscreen-poster.jpg" width="1080" height="2196">
                 <source src="beat3-lockscreen.mp4" type="video/mp4">
                 Your browser doesn’t support video playback.
               </video>
+              <figcaption>The countdown on the lock screen, with no app left open.</figcaption>
             </figure>
             <!-- Real macOS menu bar, captured live. Other apps are blurred for
                  focus + privacy; the SliceFocus timer "C1 24:05" is kept sharp
@@ -350,6 +369,103 @@
           transport_type: 'beacon'
         });
       });
+    })();
+  </script>
+
+  <!-- Video playback. No dependencies. Nothing auto-plays under prefers-reduced-motion or
+       Save-Data (the poster and the pause/play button stay; the native controls still work
+       on click), and anything that moves stops when it leaves the screen (WCAG 2.2.2).
+       Feature clips are preload="none", so they load no bytes until they are on screen. -->
+  <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+      function calm() {
+        var c = navigator.connection;
+        return reduce.matches || !!(c && c.saveData);
+      }
+      // MediaQueryList.addEventListener is missing before Safari 14.
+      function onChange(mq, fn) {
+        if (mq.addEventListener) mq.addEventListener('change', fn);
+        else if (mq.addListener) mq.addListener(fn);
+      }
+      function tryPlay(v) {
+        var p = v.play();
+        if (p && p.catch) p.catch(function () {});
+      }
+
+      /* ---- Hero loop: wide screens only, with a pause/play button. ---- */
+      (function () {
+        var media = document.querySelector('.hero-media');
+        var v = media && media.querySelector('.hero-video');
+        var btn = media && media.querySelector('.media-toggle');
+        if (!v || !btn) return;
+        var wide = window.matchMedia('(min-width: 760px)');
+        var wanted = !calm();   // what the visitor has asked for; the button shows it
+        var inView = true;
+
+        function label() {
+          btn.setAttribute('data-state', wanted ? 'playing' : 'paused');
+          btn.setAttribute('aria-label', wanted ? 'Pause the demo video' : 'Play the demo video');
+        }
+        function sync() {
+          var go = wanted && inView && wide.matches && !document.hidden;
+          if (go && v.paused) tryPlay(v);
+          else if (!go && !v.paused) v.pause();
+        }
+        v.addEventListener('playing', function () { media.classList.add('is-playing'); });
+        // The button appears once there is a clip to control (or straight away for a
+        // visitor who isn't autoplaying, who has loaded nothing yet) and goes away
+        // again if hero.webm / hero.mp4 are missing or fail to load.
+        v.addEventListener('loadedmetadata', function () { btn.hidden = false; });
+        v.querySelectorAll('source').forEach(function (src) {
+          src.addEventListener('error', function () {
+            if (src === v.lastElementChild) { btn.hidden = true; wanted = false; label(); }
+          });
+        });
+        btn.addEventListener('click', function () { wanted = !wanted; label(); sync(); });
+        onChange(reduce, function () {
+          if (reduce.matches) { wanted = false; label(); }
+          sync();
+        });
+        onChange(wide, sync);
+        document.addEventListener('visibilitychange', sync);
+        if ('IntersectionObserver' in window) {
+          new IntersectionObserver(function (entries) {
+            inView = entries[entries.length - 1].isIntersecting;
+            sync();
+          }).observe(media);
+        }
+        label();
+        if (wide.matches) {
+          if (wanted) v.preload = 'metadata'; else btn.hidden = false;
+        }
+        sync();
+      })();
+
+      /* ---- Feature clips: play muted while on screen, pause and rewind on leaving. ---- */
+      var clips = document.querySelectorAll('.beat video');
+      if (!clips.length || !('IntersectionObserver' in window)) return;
+      var held = new WeakSet();    // the visitor paused it: don't restart it under them
+      var auto = new WeakSet();    // a pause we issued, so its event isn't read as theirs
+      clips.forEach(function (v) {
+        v.addEventListener('pause', function () {
+          if (auto.delete(v)) return;
+          if (!v.ended) held.add(v);
+        });
+      });
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          var v = e.target;
+          if (e.isIntersecting) {
+            if (!calm() && !held.has(v) && v.paused) tryPlay(v);
+          } else {
+            held.delete(v);
+            if (!v.paused) { auto.add(v); v.pause(); }
+            if (v.currentTime) v.currentTime = 0;
+          }
+        });
+      }, { threshold: 0.5 });
+      clips.forEach(function (v) { io.observe(v); });
     })();
   </script>
 </body>
