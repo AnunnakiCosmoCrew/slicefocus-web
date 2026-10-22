@@ -15,7 +15,7 @@ edit, commit, push; GitHub Pages redeploys automatically (~1 minute).
 |------|---------|
 | `index.html` | The page |
 | `styles.css` | Design tokens + layout |
-| `hero-poster.png` / `.svg` | **Placeholder** for the hero video slot. Replace the `<video>` sources with the [#311](https://github.com/AnunnakiCosmoCrew/SliceFocus/issues/311) clip (`hero.mp4` / `hero.webm`); the poster shows until then. |
+| `hero.webm` / `hero.mp4` | Hero loop (15 s, silent, ≥760px). Not in the repo yet: until the clip lands the hero shows the screenshot and the pause/play button stays hidden. Played by the inline script at the end of `index.html`, which also plays the feature clips while on screen; both obey `prefers-reduced-motion` and Save-Data. Plan: `slicefocus-docs/plans/site-feature-videos.md`. |
 | `og.png` / `.svg` | 1200×630 link-preview (Open Graph) card |
 | `download-on-the-app-store.svg` | Official Apple badge |
 | `icon.svg` / `apple-touch-icon.png` | Favicons |

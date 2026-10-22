@@ -147,7 +147,14 @@ a:hover { color: var(--accent-ink); border-bottom-color: var(--accent-ink); }
   box-shadow: var(--shadow);  /* fallback for browsers without color-mix() */
   box-shadow: var(--shadow), 0 0 0 1px color-mix(in srgb, var(--fg) 8%, transparent);
 }
+.hero-media { position: relative; }
 .hero-media img { display: block; width: 100%; height: auto; }
+
+/* Hero loop (wide screens only; phones keep the portrait screenshot). The video sits
+   over the screenshot and takes its place once it has actually played, so a missing
+   or blocked clip leaves the screenshot as the poster. */
+.hero-video,
+.media-toggle { display: none; }
 
 /* Desktop hero: swap in the macOS window shot. Its PNG already includes the
    window chrome + drop shadow, so we drop the phone-style frame here and just
@@ -160,6 +167,40 @@ a:hover { color: var(--accent-ink); border-bottom-color: var(--accent-ink); }
     background: none;
     box-shadow: none;
   }
+  .hero-video {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    visibility: hidden;
+  }
+  .hero-media.is-playing .hero-video { visibility: visible; }
+  .hero-media.is-playing img { visibility: hidden; }
+
+  /* Pause/play (WCAG 2.2.2): a quiet paper disc, clay ring on hover and focus. */
+  .media-toggle {
+    position: absolute;
+    right: 28px;
+    bottom: 28px;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: var(--surface);
+    color: var(--fg);
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .media-toggle[hidden] { display: none; }
+  .media-toggle:hover { border-color: var(--accent); }
+  .media-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .media-toggle[data-state="playing"] .icon-play,
+  .media-toggle[data-state="paused"] .icon-pause { display: none; }
 }
 
 /* A quiet line under the headline so time-blocking / Pomodoro users can
@@ -331,6 +372,9 @@ section { padding: clamp(48px, 8vw, 88px) 0; }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
+  /* The hero loop and the feature clips are also held back in script (index.html):
+     no autoplay, the poster and the pause/play button stay. A click on play or on a
+     clip's native controls still plays it. */
   /* Don't shift interactive elements on hover for reduced-motion users. */
   .btn-dark:hover,
   .appstore:hover { transform: none; }
