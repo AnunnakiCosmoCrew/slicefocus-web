@@ -15,7 +15,7 @@ edit, commit, push; GitHub Pages redeploys automatically (~1 minute).
 |------|---------|
 | `index.html` | The page |
 | `styles.css` | Design tokens + layout |
-| `hero.webm` / `hero.mp4` | Hero loop (15 s, silent, ≥760px). Not in the repo yet: until the clip lands the hero shows the screenshot and the pause/play button stays hidden. Played by the inline script at the end of `index.html`, which also plays the feature clips while on screen; both obey `prefers-reduced-motion` and Save-Data. Plan: `slicefocus-docs/plans/site-feature-videos.md`. |
+| `hero.webm` / `hero.mp4` / `hero-poster.{webp,jpg}` | Hero loop (about 16 s, silent, ≥760px): plan a block on the Mac's 24-hour canvas, start it, and the Pomodoro hands over from work to break and back by itself (time-compressed). The poster is the wide-screen still and the reduced-motion / Save-Data view. Built by `tool/videos/hero/compose.sh` in SliceFocusFE from a real take; brief: `slicefocus-docs/plans/hero-video-brief.md`. Played by the inline script at the end of `index.html`, which also plays the feature clips while on screen; both obey `prefers-reduced-motion` and Save-Data. |
 | `og.png` / `.svg` | 1200×630 link-preview (Open Graph) card |
 | `download-on-the-app-store.svg` | Official Apple badge |
 | `icon.svg` / `apple-touch-icon.png` | Favicons |
