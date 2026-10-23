@@ -156,34 +156,38 @@ a:hover { color: var(--accent-ink); border-bottom-color: var(--accent-ink); }
 .hero-video,
 .media-toggle { display: none; }
 
-/* Desktop hero: swap in the macOS window shot. Its PNG already includes the
-   window chrome + drop shadow, so we drop the phone-style frame here and just
-   let it sit wider on the cream. */
+/* Desktop hero: the Mac app at 16:10 (hero-poster, then the hero loop), wider
+   than the reading column so its UI text reads at full size. The files carry
+   only the app's pixels; the page draws the frame (rounded corners, the soft
+   shadow, a hairline) on its own cream, so both themes frame it with their own
+   tokens and no baked-in background can drift from --bg after compression. */
 @media (min-width: 760px) {
   .hero-media {
-    width: min(600px, 90vw);
-    border-radius: 0;
-    overflow: visible;
-    background: none;
-    box-shadow: none;
+    --hero-w: min(1100px, 100vw - 64px);
+    width: var(--hero-w);
+    margin-left: calc(50% - var(--hero-w) / 2);
+    margin-right: 0;
+    aspect-ratio: 16 / 10;
+    border-radius: 14px;
   }
+  .hero-media img { height: 100%; object-fit: cover; }
   .hero-video {
     display: block;
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    visibility: hidden;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
   }
-  .hero-media.is-playing .hero-video { visibility: visible; }
-  .hero-media.is-playing img { visibility: hidden; }
+  .hero-media.is-playing .hero-video { opacity: 1; }
 
   /* Pause/play (WCAG 2.2.2): a quiet paper disc, clay ring on hover and focus. */
   .media-toggle {
     position: absolute;
-    right: 28px;
-    bottom: 28px;
+    right: 16px;
+    bottom: 16px;
     display: grid;
     place-items: center;
     width: 40px;

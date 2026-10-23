@@ -73,24 +73,26 @@
           on your Mac and your iPhone at the same time, in step.
         </p>
 
-        <!-- Real product screenshot: the 24-hour radial day view. No device bezel
-             (ADR-042: show the real product, not an illustration). Responsive per
-             viewport — only ONE image downloads:
-               • ≥760px (laptop/desktop): the macOS window shot (screen-mac.png).
-                 The PNG already carries its own window chrome + drop shadow, so
-                 .hero-media drops its CSS frame at that breakpoint (see styles.css).
+        <!-- Real product, no device bezel (ADR-042). Only ONE image downloads:
+               • ≥760px (laptop/desktop): hero-poster, a frame of the hero loop (the
+                 day planned on the canvas, the new block's timer just started), in a
+                 16:10 frame the page draws (rounded corners + soft shadow on the
+                 cream), so the light and dark themes frame it with their own tokens.
                • <760px (phone/fallback): the portrait iPhone shot (screen-day.png),
-                 framed with rounded corners + soft shadow. -->
+                 framed the same way. -->
         <div class="hero-media">
           <picture>
-            <source media="(min-width: 760px)" srcset="screen-mac.png"
-                    width="1125" height="1162">
+            <source media="(min-width: 760px)" srcset="hero-poster.webp" type="image/webp"
+                    width="1440" height="900">
+            <source media="(min-width: 760px)" srcset="hero-poster.jpg"
+                    width="1440" height="900">
             <img src="screen-day.png" width="760" height="1543" fetchpriority="high"
                  alt="SliceFocus showing a full day planned on the 24-hour radial clock — from Night Sleep through the day's focus blocks, with a live time marker.">
           </picture>
-          <!-- Hero loop (plan: slicefocus-docs/plans/site-feature-videos.md §4). Silent,
-               muted, looping, ≥760px only; the screenshot above stays as the poster until
-               the clip has played. No `autoplay` attribute on purpose: the script below
+          <!-- Hero loop (brief: slicefocus-docs/plans/hero-video-brief.md). Silent,
+               muted, looping, ≥760px only; the poster above stays underneath and the
+               clip fades in over it once it plays (its first frame differs from the
+               poster, which shows the timer already running). No `autoplay` attribute on purpose: the script below
                starts it, so reduced-motion and save-data visitors never get a frame of
                motion or a byte of video (preload="none"; the script only raises it to
                "metadata" when the visitor will actually get the loop). Without JS the
