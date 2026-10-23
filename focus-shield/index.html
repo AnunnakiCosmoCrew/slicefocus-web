@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Same GA4 web stream as the home page (MER-324). -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBK98EW3WQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('consent', 'default', { analytics_storage: 'granted' });
+    gtag('config', 'G-VBK98EW3WQ');
+  </script>
+
+  <title>Set up Focus Shield — SliceFocus</title>
+  <meta name="description" content="How Focus Shield keeps distracting apps and websites out of reach during a Pomodoro work phase, and how to set it up on iPhone, iPad, Mac, Safari and Chrome.">
+  <link rel="canonical" href="https://slicefocus.app/focus-shield/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="SliceFocus">
+  <meta property="og:title" content="Set up Focus Shield — SliceFocus">
+  <meta property="og:description" content="Pick the apps and sites that pull you away. During every work phase they stay out of reach; every break lets them back in. Setup for iPhone, iPad, Mac, Safari and Chrome.">
+  <meta property="og:url" content="https://slicefocus.app/focus-shield/">
+  <meta property="og:image" content="https://slicefocus.app/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="SliceFocus — a day laid out on a 24-hour radial clock.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Set up Focus Shield — SliceFocus">
+  <meta name="twitter:description" content="How Focus Shield works and how to set it up on iPhone, iPad, Mac, Safari and Chrome.">
+  <meta name="twitter:image" content="https://slicefocus.app/og.png">
+
+  <meta name="theme-color" content="#f0eee6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a1916" media="(prefers-color-scheme: dark)">
+
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400..600&display=swap">
+
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- The recovery questions, so a search for the symptom lands here. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Focus Shield isn't blocking anything on my iPhone",
+        "acceptedAnswer": { "@type": "Answer", "text": "Open Settings › Screen Time and make sure Screen Time and App & Website Activity are on. Come back to SliceFocus, turn Block apps & websites on again or tap Try again, and tap Allow when iOS asks. Then choose at least one app, category or website." }
+      },
+      {
+        "@type": "Question",
+        "name": "I don't see my apps in the Focus Shield picker",
+        "acceptedAnswer": { "@type": "Answer", "text": "The picker lists no apps while Settings › Screen Time › App & Website Activity is off. Turn it on and open the picker again. Tap a category to see the apps inside it." }
+      },
+      {
+        "@type": "Question",
+        "name": "Websites aren't blocked on my Mac",
+        "acceptedAnswer": { "@type": "Answer", "text": "Websites are blocked in Safari through the SliceFocus extension. In Safari › Settings › Extensions, tick SliceFocus and, when Safari asks for website access, choose Always allow on every website. In Chrome, install the SliceFocus Focus Shield extension and sign in with your SliceFocus account." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell nav">
+      <a class="wordmark" href="/">
+        <img src="/icon.svg" alt="" width="26" height="26">SliceFocus
+      </a>
+      <a class="btn-dark" href="https://apps.apple.com/app/id6761280632" data-loc="header">Get the app</a>
+    </div>
+  </header>
+
+  <main class="guide">
+    <!-- Copy source of truth: the recovery lines repeat the app's own
+         focusShieldPermission*, focusShieldPickerHint and focusShieldSafariAccessHint
+         strings (SliceFocusFE lib/l10n/app_en.arb). Change them there first.
+         Open figure slots are marked FIGURE (slicefocus-web#27). -->
+
+    <section class="guide-intro">
+      <div class="wrap">
+        <p class="eyebrow">Focus Shield</p>
+        <h1>Your distractions, out of reach.</h1>
+        <p class="lede">
+          Pick the apps and sites that pull you away. During a work phase they
+          are out of reach; every break lets them back in. Resisting costs
+          attention; a shield costs nothing.
+        </p>
+        <!-- FIGURE (slicefocus-web#27): 3-up of the shield in effect on iPhone, Mac and in the browser. -->
+      </div>
+    </section>
+
+    <section class="section-divider">
+      <div class="wrap">
+        <h2>Set it up where you get distracted</h2>
+        <p class="guide-note">A session started on any device shields all of them. Pick your list once per device.</p>
+
+        <div class="device-nav" role="tablist" aria-label="Devices">
+          <a href="#iphone" role="tab">iPhone &amp; iPad</a>
+          <a href="#mac" role="tab">Mac</a>
+          <a href="#chrome" role="tab">Chrome</a>
+        </div>
+
+        <article class="device" id="iphone" role="tabpanel">
+          <p class="device-how">Runs on Screen Time. Nothing to install beyond <a href="https://apps.apple.com/app/id6761280632" data-loc="guide-ios">SliceFocus</a>.</p>
+          <ol class="steps">
+            <li><b>Settings › Focus Shield</b>, turn on <b>Block apps &amp; websites</b>. Tap <b>Allow</b> when iOS asks.
+              <!-- FIGURE: the Screen Time authorization dialog. --></li>
+            <li>Tap <b>Choose apps &amp; websites</b>. Open a category to pick the apps inside; add sites at the bottom. Pick at least one, then <b>Done</b>.
+              <!-- FIGURE: the picker with a category expanded. --></li>
+            <li>Start a session. During work phases the chosen apps show the Screen Time shield.
+              <!-- FIGURE: the iOS shield. --></li>
+          </ol>
+          <div class="recovery">
+            <p><b>No apps in the picker?</b> Turn on <b>Settings › Screen Time › App &amp; Website Activity</b>, then open it again.</p>
+            <p><b>Declined access?</b> Check the same setting, then turn Block apps &amp; websites on again or tap <b>Try again</b>.</p>
+          </div>
+        </article>
+
+        <article class="device" id="mac" role="tabpanel">
+          <p class="device-how">Apps are interrupted by <a href="https://apps.apple.com/app/id6761280632" data-loc="guide-mac">SliceFocus for Mac</a>, not closed. Websites are held back in Safari by the extension that ships inside it.</p>
+          <ol class="steps">
+            <li><b>Settings › Focus Shield</b>, turn on <b>Block apps &amp; websites</b>.</li>
+            <li>Under <b>Apps</b>, <b>Add app…</b> from your Applications folder. Under <b>Websites</b>, add sites or take a <b>Quick add</b> preset.</li>
+            <li>Next to <b>Safari extension</b>, click <b>Enable in Safari</b>, tick <b>SliceFocus</b>, and choose <b>Always allow on every website</b> when Safari asks.
+              <!-- FIGURE: Safari › Settings › Extensions with SliceFocus ticked and the website-access choice. --></li>
+            <li>Start a session. A listed app brings up the shield window; a listed site shows a calm page instead.</li>
+          </ol>
+          <figure class="shot shot-bare">
+            <img src="mac-shield-window.png" width="912" height="512" loading="lazy"
+                 alt="The macOS shield window: “Instagram is shielded”, “Shielded until 10:25”, with the buttons Take a break and Back to focus.">
+            <figcaption>The shield window over a listed app.</figcaption>
+          </figure>
+          <div class="recovery">
+            <p><b>Sites still open?</b> The Safari extension row says <b>Off</b> until the extension is on. Safari and Chrome are covered; other browsers are not.</p>
+          </div>
+        </article>
+
+        <article class="device" id="chrome" role="tabpanel">
+          <p class="device-how">The <a href="https://chromewebstore.google.com/detail/cdjldffcnhpkcohhaloeccijlldlhjnb" rel="noopener">SliceFocus Focus Shield</a> extension follows your session through your account, on any computer. <span class="soon">On its way to the Chrome Web Store.</span>
+            <!-- Remove the pill once the listing is approved (slicefocus-chrome founder checklist, step 10). --></p>
+          <ol class="steps">
+            <li>Install the extension and sign in with the Google or email account you use in SliceFocus.</li>
+            <li>Open <b>Edit block list</b> from the popup and add your sites, or take a <b>Quick add</b> preset.</li>
+            <li>Start a session. Listed sites close for the work phase and open again at the break. <b>Lift shield now</b> lifts it by hand until the next work phase.</li>
+          </ol>
+          <figure class="shot shot-popup">
+            <img src="chrome-popup.png" width="664" height="560" loading="lazy"
+                 alt="The extension’s toolbar popup, signed in, during a work phase, with the Lift shield now button ringed.">
+            <figcaption>The popup during a work phase.</figcaption>
+          </figure>
+          <div class="recovery">
+            <p><b>Signed in with Apple?</b> Link a Google or email login in SliceFocus under <b>Settings › Account</b> first; Chrome can’t use Sign in with Apple.</p>
+          </div>
+        </article>
+
+        <figure class="shot shot-wide">
+          <img src="blocked-page.png" width="1600" height="1000" loading="lazy"
+               alt="The page a shielded website shows: “Shielded by SliceFocus until 19:45. This site is on your Focus Shield list. Back to the work in front of you.”">
+          <figcaption>What a listed site shows during a work phase, in Safari and Chrome.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section-divider">
+      <div class="wrap">
+        <h2>Good to know</h2>
+        <ul class="limits">
+          <li>It acts only during work phases. Breaks and idle time are untouched, and you can lift it yourself.</li>
+          <li>Lists stay on each device. On iPhone, Apple’s picker gives SliceFocus opaque tokens, so the app never learns which apps you chose.</li>
+          <li>The extensions never read page content; they only hold back the addresses on your list. <a href="https://anunnakicosmocrew.github.io/slicefocus-docs/legal/privacy-policy">Privacy policy</a>.</li>
+        </ul>
+        <p class="guide-note">Stuck? Write to <a href="mailto:contact@cosmocrew.dev?subject=Focus%20Shield">contact@cosmocrew.dev</a> with your device and what you see.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="links">
+        <a href="/">Home</a>
+        <a href="https://apps.apple.com/app/id6761280632" data-loc="footer">App Store</a>
+        <a href="https://github.com/AnunnakiCosmoCrew">GitHub</a>
+        <a href="https://anunnakicosmocrew.github.io/slicefocus-docs/legal/privacy-policy">Privacy</a>
+      </p>
+      <p class="fineprint">slicefocus.app uses privacy-friendly analytics to count visits and App&nbsp;Store clicks — no cross-site tracking, no ads.</p>
+      <p>© 2026 <a href="https://anunnakicosmocrew.github.io/">CosmoCrew</a> — a brand of <a href="https://luvita.tr/">Luvita&nbsp;Teknoloji&nbsp;Ltd.&nbsp;Şti.</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var tabs = document.querySelectorAll('.device-nav a');
+      var panels = document.querySelectorAll('.device');
+      if (!tabs.length) return;
+      function select(id) {
+        var found = false;
+        panels.forEach(function (p) { p.hidden = p.id !== id; if (p.id === id) found = true; });
+        if (!found) { panels.forEach(function (p) { p.hidden = false; }); }
+        tabs.forEach(function (t) { t.setAttribute('aria-selected', t.hash === '#' + id ? 'true' : 'false'); });
+      }
+      var initial = location.hash.slice(1);
+      if (!initial) initial = /iPhone|iPad/.test(navigator.userAgent) ? 'iphone' : (/Mac/.test(navigator.platform) ? 'mac' : 'chrome');
+      select(initial);
+      tabs.forEach(function (t) {
+        t.addEventListener('click', function (e) { e.preventDefault(); history.replaceState(null, '', t.hash); select(t.hash.slice(1)); });
+      });
+      window.addEventListener('hashchange', function () { select(location.hash.slice(1)); });
+    })();
+  </script>
+
+  <!-- Same App Store funnel telemetry as the home page (MER-324). -->
+  <script>
+    (function () {
+      var STORE = 'apps.apple.com';
+      var src = (new URLSearchParams(location.search).get('utm_source') || '')
+                  .toLowerCase().replace(/[^a-z0-9_]/g, '');
+      var ct = src || 'web';
+      document.querySelectorAll('a[href*="' + STORE + '"]').forEach(function (a) {
+        try { var u = new URL(a.href); u.searchParams.set('ct', ct); a.href = u.toString(); }
+        catch (e) {}
+      });
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href*="' + STORE + '"]');
+        if (!a || typeof gtag !== 'function') return;
+        gtag('event', 'app_store_click', {
+          link_location: a.getAttribute('data-loc') || 'unknown',
+          campaign: ct,
+          transport_type: 'beacon'
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
