@@ -391,12 +391,6 @@ section { padding: clamp(48px, 8vw, 88px) 0; }
    because this is a page to act on, not a showcase. */
 .guide h1 { font-size: clamp(2.3rem, 6vw, 3.4rem); }
 .guide h2 { margin-bottom: 1rem; }
-.guide h3 {
-  margin: 1.6rem 0 0.5rem;
-  font-size: clamp(1.2rem, 2.6vw, 1.45rem);
-  line-height: 1.2;
-  letter-spacing: -0.012em;
-}
 .guide section { padding: clamp(40px, 7vw, 72px) 0; }
 .guide-intro { padding-bottom: clamp(24px, 5vw, 48px); }
 .guide-intro .lede { margin: 0; max-width: none; }
@@ -419,11 +413,10 @@ section { padding: clamp(48px, 8vw, 88px) 0; }
 .device-nav a:hover { border-color: var(--accent); color: var(--fg); }
 
 .device {
-  border-top: 1px solid var(--line);
-  padding: clamp(22px, 4vw, 34px) 0 clamp(10px, 2vw, 18px);
+  padding: clamp(14px, 3vw, 22px) 0 clamp(10px, 2vw, 18px);
   scroll-margin-top: 24px;
 }
-.device h3 { margin-top: 0; }
+.device[hidden] { display: none; }
 .device-how { color: var(--muted); margin-bottom: 1rem; }
 .device-how .soon {
   display: inline-block;
@@ -487,8 +480,6 @@ section { padding: clamp(48px, 8vw, 88px) 0; }
 }
 .limits li:last-child { border-bottom: 1px solid var(--line); }
 
-.guide-help .early-actions { justify-content: flex-start; margin-top: 1.2rem; }
-.guide-help .appstore { margin-top: 0; }
 .beat-more { margin-top: 0.4rem; }
 .beat-more a { font-weight: 500; }
 .steps a b, .recovery a b { color: inherit; }   /* a bold label inside a link keeps the link colour */
@@ -505,6 +496,4 @@ section { padding: clamp(48px, 8vw, 88px) 0; }
 .guide .shot-bare { width: min(456px, 100%); }
 .guide .shot-bare img { border-radius: 0; background: transparent; box-shadow: none; }
 .guide-note { color: var(--muted); font-size: 0.97rem; }
-.device-nav a[aria-selected="true"] { border-color: var(--accent); background: var(--accent); color: var(--btn-fg); }
-.device[hidden] { display: none; }
-.device { border-top: 0; padding-top: clamp(14px, 3vw, 22px); }
+.device-nav a[aria-current="true"] { border-color: var(--accent); background: var(--accent); color: var(--btn-fg); }

@@ -64,7 +64,7 @@
       {
         "@type": "Question",
         "name": "Websites aren't blocked on my Mac",
-        "acceptedAnswer": { "@type": "Answer", "text": "Websites are blocked in Safari through the SliceFocus extension. In Safari › Settings › Extensions, tick SliceFocus and, when Safari asks for website access, choose Always allow on every website. In Chrome, install the SliceFocus Focus Shield extension and sign in with your SliceFocus account." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Websites are blocked in Safari through the SliceFocus extension. In Safari › Settings › Extensions, tick SliceFocus and, when Safari asks for website access, choose Always allow on every website. A Chrome extension, SliceFocus Focus Shield, is on its way to the Chrome Web Store." }
       }
     ]
   }
@@ -104,13 +104,13 @@
         <h2>Set it up where you get distracted</h2>
         <p class="guide-note">A session started on any device shields all of them. Pick your list once per device.</p>
 
-        <div class="device-nav" role="tablist" aria-label="Devices">
-          <a href="#iphone" role="tab">iPhone &amp; iPad</a>
-          <a href="#mac" role="tab">Mac</a>
-          <a href="#chrome" role="tab">Chrome</a>
-        </div>
+        <nav class="device-nav" aria-label="Devices">
+          <a href="#iphone">iPhone &amp; iPad</a>
+          <a href="#mac">Mac</a>
+          <a href="#chrome">Chrome</a>
+        </nav>
 
-        <article class="device" id="iphone" role="tabpanel">
+        <article class="device" id="iphone">
           <p class="device-how">Runs on Screen Time. Nothing to install beyond <a href="https://apps.apple.com/app/id6761280632" data-loc="guide-ios">SliceFocus</a>.</p>
           <ol class="steps">
             <li><b>Settings › Focus Shield</b>, turn on <b>Block apps &amp; websites</b>. Tap <b>Allow</b> when iOS asks.
@@ -126,7 +126,7 @@
           </div>
         </article>
 
-        <article class="device" id="mac" role="tabpanel">
+        <article class="device" id="mac">
           <p class="device-how">Apps are interrupted by <a href="https://apps.apple.com/app/id6761280632" data-loc="guide-mac">SliceFocus for Mac</a>, not closed. Websites are held back in Safari by the extension that ships inside it.</p>
           <ol class="steps">
             <li><b>Settings › Focus Shield</b>, turn on <b>Block apps &amp; websites</b>.</li>
@@ -145,11 +145,14 @@
           </div>
         </article>
 
-        <article class="device" id="chrome" role="tabpanel">
-          <p class="device-how">The <a href="https://chromewebstore.google.com/detail/cdjldffcnhpkcohhaloeccijlldlhjnb" rel="noopener">SliceFocus Focus Shield</a> extension follows your session through your account, on any computer. <span class="soon">On its way to the Chrome Web Store.</span>
-            <!-- Remove the pill once the listing is approved (slicefocus-chrome founder checklist, step 10). --></p>
+        <article class="device" id="chrome">
+          <p class="device-how">The <b>SliceFocus Focus Shield</b> extension follows your session through your account, on any computer. <span class="soon">On its way to the Chrome Web Store.</span>
+            <!-- Once the listing is approved (slicefocus-chrome founder checklist, step 10): remove the
+                 pill, link the name and the install step to
+                 https://chromewebstore.google.com/detail/cdjldffcnhpkcohhaloeccijlldlhjnb and drop the
+                 "coming" wording from the FAQ answer in the head. --></p>
           <ol class="steps">
-            <li>Install the extension and sign in with the Google or email account you use in SliceFocus.</li>
+            <li>Once it is in the Chrome Web Store, install it and sign in with the Google or email account you use in SliceFocus.</li>
             <li>Open <b>Edit block list</b> from the popup and add your sites, or take a <b>Quick add</b> preset.</li>
             <li>Start a session. Listed sites close for the work phase and open again at the break. <b>Lift shield now</b> lifts it by hand until the next work phase.</li>
           </ol>
@@ -202,15 +205,20 @@
       var tabs = document.querySelectorAll('.device-nav a');
       var panels = document.querySelectorAll('.device');
       if (!tabs.length) return;
+      var ids = Array.prototype.map.call(panels, function (p) { return p.id; });
+      // iPadOS Safari reports a Mac user agent and platform; the touch points tell it apart.
+      var apple = /Mac/.test(navigator.platform);
+      var byDevice = (/iPhone|iPad/.test(navigator.userAgent) || (apple && navigator.maxTouchPoints > 1))
+        ? 'iphone' : (apple ? 'mac' : 'chrome');
       function select(id) {
-        var found = false;
-        panels.forEach(function (p) { p.hidden = p.id !== id; if (p.id === id) found = true; });
-        if (!found) { panels.forEach(function (p) { p.hidden = false; }); }
-        tabs.forEach(function (t) { t.setAttribute('aria-selected', t.hash === '#' + id ? 'true' : 'false'); });
+        if (ids.indexOf(id) < 0) id = byDevice;   // an unrelated hash never un-hides every panel
+        panels.forEach(function (p) { p.hidden = p.id !== id; });
+        tabs.forEach(function (t) {
+          if (t.hash === '#' + id) t.setAttribute('aria-current', 'true');
+          else t.removeAttribute('aria-current');
+        });
       }
-      var initial = location.hash.slice(1);
-      if (!initial) initial = /iPhone|iPad/.test(navigator.userAgent) ? 'iphone' : (/Mac/.test(navigator.platform) ? 'mac' : 'chrome');
-      select(initial);
+      select(location.hash.slice(1));
       tabs.forEach(function (t) {
         t.addEventListener('click', function (e) { e.preventDefault(); history.replaceState(null, '', t.hash); select(t.hash.slice(1)); });
       });
