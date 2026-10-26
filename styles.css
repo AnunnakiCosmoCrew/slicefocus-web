@@ -497,3 +497,23 @@ section { padding: clamp(48px, 8vw, 88px) 0; }
 .guide .shot-bare img { border-radius: 0; background: transparent; box-shadow: none; }
 .guide-note { color: var(--muted); font-size: 0.97rem; }
 .device-nav a[aria-current="true"] { border-color: var(--accent); background: var(--accent); color: var(--btn-fg); }
+
+/* ---- Comparison pages (/vs/): who each app suits, then a table of checkable facts ---- */
+.vs-suits { margin: 0 0 1.4rem; padding: 0; list-style: none; }
+.vs-suits li { padding: 0.8rem 0; border-top: 1px solid var(--line); }
+.vs-suits li:last-child { border-bottom: 1px solid var(--line); }
+.vs-suits b { font-weight: 600; color: var(--fg); }
+.vs-table { width: 100%; border-collapse: collapse; font-size: 0.97rem; margin: 0.6rem 0 0.4rem; }
+.vs-table th, .vs-table td { text-align: left; vertical-align: top; padding: 0.7rem 0.8rem 0.7rem 0; border-top: 1px solid var(--line); }
+.vs-table thead th { border-top: 0; font-weight: 600; color: var(--fg); }
+.vs-table tbody th { font-weight: 500; color: var(--muted); width: 28%; }
+.vs-table td { color: var(--fg); }
+.vs-table tbody tr:last-child > * { border-bottom: 1px solid var(--line); }
+.vs-sources { color: var(--muted); font-size: 0.92rem; }
+@media (max-width: 560px) {
+  .vs-table, .vs-table tbody, .vs-table tr, .vs-table th, .vs-table td { display: block; }
+  .vs-table thead { position: absolute; left: -9999px; }
+  .vs-table tr { padding: 0.7rem 0; border-top: 1px solid var(--line); }
+  .vs-table th, .vs-table td, .vs-table tbody th { border: 0; padding: 0 0 0.3rem; width: auto; }
+  .vs-table td[data-app]::before { content: attr(data-app) ": "; color: var(--muted); }
+}
