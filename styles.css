@@ -491,6 +491,8 @@ section { padding: clamp(48px, 8vw, 88px) 0; }
 .guide .shot-popup { width: min(300px, 80vw); }
 .guide .shot-popup img { border-radius: 12px; }
 .guide .shot figcaption { text-align: center; }
+.guide .shot-phone { width: min(320px, 82vw); }
+.guide .shot-phone img { border-radius: 18px; }
 /* The shield window capture carries its own shadow and transparent corners
    (like the menu bar strip), so no page frame round it. */
 .guide .shot-bare { width: min(456px, 100%); }
