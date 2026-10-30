@@ -1,22 +1,22 @@
 /* SliceFocus — landing page.
-   Visual language: ADR-042 "minimal & sincere". Warm cream canvas, clay accent,
-   large literary serif headlines (Fraunces), a clean humanist sans (Inter), generous
-   whitespace, a dark pill CTA. The product is the hero; saturation lives in the
+   Visual language: ADR-042 "minimal & sincere". Sage-white canvas, forest greens
+   from the app icon, large literary serif headlines (Fraunces), a clean humanist
+   sans (Inter), generous whitespace, a deep forest pill CTA. The product is the hero; saturation lives in the
    real app screenshots, not the page chrome. */
 
 :root {
-  --bg:        #f0eee6;  /* warm cream canvas */
-  --surface:   #faf9f5;  /* lifted paper — screenshot frames */
-  --fg:        #141413;  /* warm near-black */
-  --muted:     #6f6e66;  /* warm grey, secondary text */
-  --faint:     #8a897f;  /* warm grey, tertiary text */
-  --accent:    #d97757;  /* clay / coral */
-  --accent-ink:#c4623f;  /* deeper clay for hover */
-  --line:      #e3dacc;  /* warm hairline rules / borders */
-  --btn:       #141413;  /* dark pill button */
-  --btn-fg:    #faf9f5;
-  --btn-hover: #2b2a26;
-  --shadow: 0 28px 60px -28px rgba(38, 30, 20, 0.30);
+  --bg:        #f3f5f0;  /* soft sage-white canvas */
+  --surface:   #fbfcfa;  /* lifted paper — screenshot frames */
+  --fg:        #16211c;  /* green-black */
+  --muted:     #56655d;  /* moss grey, secondary text */
+  --faint:     #63706a;  /* moss grey, tertiary text */
+  --accent:    #3c7a5e;  /* forest green (icon) */
+  --accent-ink:#2d4a3e;  /* deep forest for hover (icon) */
+  --line:      #dde4dc;  /* sage hairline rules / borders */
+  --btn:       #2d4a3e;  /* deep forest pill button */
+  --btn-fg:    #fbfcfa;
+  --btn-hover: #233b31;
+  --shadow: 0 28px 60px -28px rgba(25, 45, 35, 0.25);
 
   --serif: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, ui-serif, serif;
   --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -24,17 +24,17 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg:        #1a1916;
-    --surface:   #22201c;
-    --fg:        #ece7dd;
-    --muted:     #a8a297;
-    --faint:     #8d877c;
-    --accent:    #e08a6b;
-    --accent-ink:#ef9d80;
-    --line:      #33302a;
-    --btn:       #ece7dd;
-    --btn-fg:    #1a1916;
-    --btn-hover: #fffdf8;
+    --bg:        #111714;
+    --surface:   #19211d;
+    --fg:        #e5ece7;
+    --muted:     #a2afa7;
+    --faint:     #86948c;
+    --accent:    #8dbf91;
+    --accent-ink:#aed3b0;
+    --line:      #2a3530;
+    --btn:       #e5ece7;
+    --btn-fg:    #111714;
+    --btn-hover: #ffffff;
     --shadow: 0 28px 60px -28px rgba(0, 0, 0, 0.6);
   }
 }
