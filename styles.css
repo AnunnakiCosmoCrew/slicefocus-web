@@ -1,17 +1,16 @@
 /* SliceFocus — landing page.
-   Visual language modeled on claude.ai / anthropic.com (ADR-042 "minimal & sincere"):
-   warm cream canvas, Anthropic clay accent, large literary serif headlines (Fraunces
-   ≈ "Anthropic Serif"), a clean humanist sans (Inter ≈ "Anthropic Sans"), generous
+   Visual language: ADR-042 "minimal & sincere". Warm cream canvas, clay accent,
+   large literary serif headlines (Fraunces), a clean humanist sans (Inter), generous
    whitespace, a dark pill CTA. The product is the hero; saturation lives in the
    real app screenshots, not the page chrome. */
 
 :root {
-  --bg:        #f0eee6;  /* the signature Anthropic cream canvas */
+  --bg:        #f0eee6;  /* warm cream canvas */
   --surface:   #faf9f5;  /* lifted paper — screenshot frames */
   --fg:        #141413;  /* warm near-black */
   --muted:     #6f6e66;  /* warm grey, secondary text */
   --faint:     #8a897f;  /* warm grey, tertiary text */
-  --accent:    #d97757;  /* Anthropic clay / coral */
+  --accent:    #d97757;  /* clay / coral */
   --accent-ink:#c4623f;  /* deeper clay for hover */
   --line:      #e3dacc;  /* warm hairline rules / borders */
   --btn:       #141413;  /* dark pill button */
@@ -97,7 +96,7 @@ a:hover { color: var(--accent-ink); border-bottom-color: var(--accent-ink); }
   margin: 0 0 1rem;
 }
 
-/* ---- Dark pill button (echoes claude.ai's "Try Claude") ---- */
+/* ---- Dark pill button (primary CTA) ---- */
 .btn-dark {
   display: inline-flex;
   align-items: center;
@@ -238,7 +237,7 @@ a:hover { color: var(--accent-ink); border-bottom-color: var(--accent-ink); }
 section { padding: clamp(48px, 8vw, 88px) 0; }
 .section-divider { border-top: 1px solid var(--line); }
 
-/* How it works + science intros read centered and airy, like claude.ai. */
+/* How it works + science intros read centered and airy. */
 .how, .science { text-align: center; }
 .how p { max-width: 48ch; margin-left: auto; margin-right: auto; color: var(--fg); }
 .science > .wrap > p { max-width: 48ch; margin-left: auto; margin-right: auto; }
