@@ -405,11 +405,9 @@
   <script>
     (function () {
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-      // No autoplay for a visitor who asked for less motion, less data, or is on a
-      // slow connection (effectiveType is Chrome-only; others just see undefined).
       function calm() {
         var c = navigator.connection;
-        return reduce.matches || !!(c && (c.saveData || /(^|-)2g$|^3g$/.test(c.effectiveType || '')));
+        return reduce.matches || !!(c && c.saveData);
       }
       // MediaQueryList.addEventListener is missing before Safari 14.
       function onChange(mq, fn) {
