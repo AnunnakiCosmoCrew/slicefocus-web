@@ -426,7 +426,8 @@
         var btn = media && media.querySelector('.media-toggle');
         if (!v || !btn) return;
         var wanted = !calm();   // what the visitor has asked for; the button shows it
-        var inView = true;
+        // With an observer, its first callback decides; nothing loads before it.
+        var inView = !('IntersectionObserver' in window);
 
         function label() {
           btn.setAttribute('data-state', wanted ? 'playing' : 'paused');
@@ -437,7 +438,12 @@
           if (go) {
             // The first bytes load only once the loop is wanted and on screen.
             if (v.preload === 'none') v.preload = 'metadata';
-            if (v.paused) tryPlay(v);
+            if (v.paused) {
+              var p = v.play();
+              // Refused (iOS Low Power Mode, a data-saver browser): offer Play
+              // instead of showing a Pause button over a still.
+              if (p && p.catch) p.catch(function () { wanted = false; label(); btn.hidden = false; });
+            }
           } else if (!v.paused) v.pause();
         }
         v.addEventListener('playing', function () { media.classList.add('is-playing'); });
