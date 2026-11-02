@@ -82,7 +82,7 @@
           <picture>
             <source srcset="hero-poster.webp" type="image/webp" width="1440" height="900">
             <img src="hero-poster.jpg" width="1440" height="900" fetchpriority="high"
-                 alt="SliceFocus showing a day planned on its 24-hour radial clock, with a live time marker and the day's time blocks listed below the clock.">
+                 alt="SliceFocus on the Mac: a day planned on its 24-hour radial clock, a Deep work block just started, and its 25-minute focus timer counting below the clock.">
           </picture>
           <!-- Hero loop (brief: slicefocus-docs/plans/hero-video-brief.md). Silent,
                muted, looping, at every width since slicefocus-web#37 (phones got the
@@ -405,9 +405,11 @@
   <script>
     (function () {
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+      // No autoplay for a visitor who asked for less motion, less data, or is on a
+      // slow connection (effectiveType is Chrome-only; others just see undefined).
       function calm() {
         var c = navigator.connection;
-        return reduce.matches || !!(c && c.saveData);
+        return reduce.matches || !!(c && (c.saveData || /(^|-)2g$|^3g$/.test(c.effectiveType || '')));
       }
       // MediaQueryList.addEventListener is missing before Safari 14.
       function onChange(mq, fn) {
@@ -434,8 +436,11 @@
         }
         function sync() {
           var go = wanted && inView && !document.hidden;
-          if (go && v.paused) tryPlay(v);
-          else if (!go && !v.paused) v.pause();
+          if (go) {
+            // The first bytes load only once the loop is wanted and on screen.
+            if (v.preload === 'none') v.preload = 'metadata';
+            if (v.paused) tryPlay(v);
+          } else if (!v.paused) v.pause();
         }
         v.addEventListener('playing', function () { media.classList.add('is-playing'); });
         // The button appears once there is a clip to control (or straight away for a
@@ -460,7 +465,7 @@
           }).observe(media);
         }
         label();
-        if (wanted) v.preload = 'metadata'; else btn.hidden = false;
+        if (!wanted) btn.hidden = false;
         sync();
       })();
 

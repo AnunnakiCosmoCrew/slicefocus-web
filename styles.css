@@ -135,8 +135,6 @@ a:hover { color: var(--accent-ink); border-bottom-color: var(--accent-ink); }
 /* ---- Hero ---- */
 .hero { text-align: center; padding: clamp(56px, 10vw, 108px) 0 clamp(44px, 8vw, 80px); }
 
-/* Portrait product screen: rounded corners + soft shadow, centered on cream.
-   No device bezel (ADR-042) — the real app screenshot is the hero. */
 /* Hero: the Mac app at 16:10 (hero-poster, then the hero loop), at every width
    since slicefocus-web#37 (phones showed a portrait still before). Wider than
    the reading column on desktop so its UI text reads at full size; 16 px
