@@ -441,8 +441,12 @@
             if (v.paused) {
               var p = v.play();
               // Refused (iOS Low Power Mode, a data-saver browser): offer Play
-              // instead of showing a Pause button over a still.
-              if (p && p.catch) p.catch(function () { wanted = false; label(); btn.hidden = false; });
+              // instead of showing a Pause button over a still. Our own pause()
+              // while the first play() is still pending rejects it with an
+              // AbortError, which is not a refusal.
+              if (p && p.catch) p.catch(function (e) {
+                if (e && e.name === 'NotAllowedError') { wanted = false; label(); btn.hidden = false; }
+              });
             }
           } else if (!v.paused) v.pause();
         }
