@@ -194,14 +194,25 @@
        by comparison page. -->
   <script>
     (function () {
-      var STORE = 'apps.apple.com';
+      // Only our own listing: the comparison pages also link Forest's and Structured's.
+      var OURS = 'a[href*="apps.apple.com"][href*="id6761280632"]';
+      // Apple's provider token for our developer account. App Store Connect counts a
+      // campaign only when the link carries both pt and ct (App Store Connect Help,
+      // "Campaign links"); mt=8 is the media type Apple's own campaign links use.
+      var PT = '128684421';
       var ct = 'vs_forest';
-      document.querySelectorAll('a[href*="' + STORE + '"]').forEach(function (a) {
-        try { var u = new URL(a.href); u.searchParams.set('ct', ct); a.href = u.toString(); }
+      document.querySelectorAll(OURS).forEach(function (a) {
+        try {
+          var u = new URL(a.href);
+          u.searchParams.set('pt', PT);
+          u.searchParams.set('ct', ct);
+          u.searchParams.set('mt', '8');
+          a.href = u.toString();
+        }
         catch (e) { /* leave href untouched if it can't be parsed */ }
       });
       document.addEventListener('click', function (e) {
-        var a = e.target.closest && e.target.closest('a[href*="' + STORE + '"]');
+        var a = e.target.closest && e.target.closest(OURS);
         if (!a || typeof gtag !== 'function') return;
         gtag('event', 'app_store_click', {
           link_location: a.getAttribute('data-loc') || 'unknown',
