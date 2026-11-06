@@ -135,76 +135,66 @@ a:hover { color: var(--accent-ink); border-bottom-color: var(--accent-ink); }
 /* ---- Hero ---- */
 .hero { text-align: center; padding: clamp(56px, 10vw, 108px) 0 clamp(44px, 8vw, 80px); }
 
-/* Portrait product screen: rounded corners + soft shadow, centered on cream.
-   No device bezel (ADR-042) — the real app screenshot is the hero. */
+/* Hero: the Mac app at 16:10 (hero-poster, then the hero loop), at every width
+   since slicefocus-web#37 (phones showed a portrait still before). Wider than
+   the reading column on desktop so its UI text reads at full size; 16 px
+   gutters on a phone. The files carry only the app's pixels; the page draws the
+   frame (rounded corners, the soft shadow, a hairline) on its own cream, so both
+   themes frame it with their own tokens and no baked-in background can drift
+   from --bg after compression. */
 .hero-media {
-  width: min(330px, 76vw);
-  margin: clamp(40px, 6vw, 60px) auto 0;
-  border-radius: 30px;
+  --hero-w: min(1100px, 100vw - 32px);
+  position: relative;
+  width: var(--hero-w);
+  margin: clamp(40px, 6vw, 60px) 0 0 calc(50% - var(--hero-w) / 2);
+  aspect-ratio: 16 / 10;
+  border-radius: 14px;
   overflow: hidden;
   background: var(--surface);
   box-shadow: var(--shadow);  /* fallback for browsers without color-mix() */
   box-shadow: var(--shadow), 0 0 0 1px color-mix(in srgb, var(--fg) 8%, transparent);
 }
-.hero-media { position: relative; }
-.hero-media img { display: block; width: 100%; height: auto; }
-
-/* Hero loop (wide screens only; phones keep the portrait screenshot). The video sits
-   over the screenshot and takes its place once it has actually played, so a missing
-   or blocked clip leaves the screenshot as the poster. */
-.hero-video,
-.media-toggle { display: none; }
-
-/* Desktop hero: the Mac app at 16:10 (hero-poster, then the hero loop), wider
-   than the reading column so its UI text reads at full size. The files carry
-   only the app's pixels; the page draws the frame (rounded corners, the soft
-   shadow, a hairline) on its own cream, so both themes frame it with their own
-   tokens and no baked-in background can drift from --bg after compression. */
+.hero-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
 @media (min-width: 760px) {
-  .hero-media {
-    --hero-w: min(1100px, 100vw - 64px);
-    width: var(--hero-w);
-    margin-left: calc(50% - var(--hero-w) / 2);
-    margin-right: 0;
-    aspect-ratio: 16 / 10;
-    border-radius: 14px;
-  }
-  .hero-media img { height: 100%; object-fit: cover; }
-  .hero-video {
-    display: block;
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-  }
-  .hero-media.is-playing .hero-video { opacity: 1; }
-
-  /* Pause/play (WCAG 2.2.2): a quiet paper disc, clay ring on hover and focus. */
-  .media-toggle {
-    position: absolute;
-    right: 16px;
-    bottom: 16px;
-    display: grid;
-    place-items: center;
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    border: 1px solid var(--line);
-    border-radius: 50%;
-    background: var(--surface);
-    color: var(--fg);
-    cursor: pointer;
-    transition: border-color 0.15s;
-  }
-  .media-toggle[hidden] { display: none; }
-  .media-toggle:hover { border-color: var(--accent); }
-  .media-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-  .media-toggle[data-state="playing"] .icon-play,
-  .media-toggle[data-state="paused"] .icon-pause { display: none; }
+  .hero-media { --hero-w: min(1100px, 100vw - 64px); }
 }
+
+/* The loop sits over the poster and fades in once it has actually played, so a
+   missing or blocked clip leaves the poster. */
+.hero-video {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.hero-media.is-playing .hero-video { opacity: 1; }
+
+/* Pause/play (WCAG 2.2.2): a quiet paper disc, clay ring on hover and focus. */
+.media-toggle {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--fg);
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.media-toggle[hidden] { display: none; }
+.media-toggle:hover { border-color: var(--accent); }
+.media-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.media-toggle[data-state="playing"] .icon-play,
+.media-toggle[data-state="paused"] .icon-pause { display: none; }
 
 /* A quiet line under the headline so time-blocking / Pomodoro users can
    self-identify before the lede. */
