@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Same GA4 web stream as the home page (MER-324). -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBK98EW3WQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('consent', 'default', { analytics_storage: 'granted' });
+    gtag('config', 'G-VBK98EW3WQ');
+  </script>
+
+  <title>A Pomodoro timer that runs itself | SliceFocus</title>
+  <meta name="description" content="A timer that waits for a tap at the end of every round breaks the rhythm it is meant to keep. SliceFocus moves from work to break and back by itself, on every device you use. Free on iPhone and Mac.">
+  <link rel="canonical" href="https://slicefocus.app/pomodoro/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="SliceFocus">
+  <meta property="og:title" content="A Pomodoro timer that runs itself | SliceFocus">
+  <meta property="og:description" content="A timer that waits for a tap at the end of every round breaks the rhythm it is meant to keep. SliceFocus moves from work to break and back by itself, on every device you use. Free on iPhone and Mac.">
+  <meta property="og:url" content="https://slicefocus.app/pomodoro/">
+  <meta property="og:image" content="https://slicefocus.app/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="SliceFocus — a day laid out on a 24-hour clock.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="A Pomodoro timer that runs itself | SliceFocus">
+  <meta name="twitter:description" content="A timer that waits for a tap at the end of every round breaks the rhythm it is meant to keep. SliceFocus moves from work to break and back by itself, on every device you use. Free on iPhone and Mac.">
+  <meta name="twitter:image" content="https://slicefocus.app/og.png">
+
+  <meta name="theme-color" content="#f3f5f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111714" media="(prefers-color-scheme: dark)">
+
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400..600&display=swap">
+
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell nav">
+      <a class="wordmark" href="/">
+        <img src="/icon.svg" alt="" width="26" height="26">
+        <span class="wordmark-text">SliceFocus <span class="maker">by CosmoCrew</span></span>
+      </a>
+      <a class="btn-dark" href="https://apps.apple.com/app/id6761280632" data-loc="header">Get the app</a>
+    </div>
+  </header>
+
+  <main class="guide">
+    <!-- Copy source of truth: slicefocus-docs plans/moment-pages.md, "Page 3"
+         (slicefocus-web#51). Change the wording there first. The timer's rounds run by
+         themselves inside a started session; each block's session is started by the user. -->
+    <section class="guide-intro">
+      <div class="wrap">
+        <h1>Start once. The timer runs the rest.</h1>
+        <p class="lede">A timer that waits for a tap at the end of every round breaks the rhythm it is meant to keep. SliceFocus moves from work to break and back by itself, on every device you use. Free on iPhone and Mac.</p>
+      </div>
+    </section>
+
+    <section class="section-divider">
+      <div class="wrap">
+        <h2>What it does</h2>
+        <ul class="vs-suits">
+          <li><b>Runs the rounds for you.</b> 25 minutes of work, a 5-minute break, and a 15-minute break after four rounds. You can change every length in Settings, and turn the automatic move off if you want to tap.</li>
+          <li><b>Stays in sight.</b> The countdown shows on the iPhone lock screen and in the Mac menu bar, with no window open.</li>
+          <li><b>One timer on every device.</b> Signed in on your iPhone and your Mac, you start on one and see it on the other. Pause on one, and the other follows.</li>
+          <li><b>Tells you once.</b> One notification when each round ends.</li>
+          <li><b>Sound if you want it.</b> White, brown or pink noise that pauses with the timer.</li>
+          <li><b>Works with or without a plan.</b> Start a timer on a block from your day, or tap Start Focus Session for one on its own. If you are still working when a block’s planned time is up, the timer keeps going and the block stretches to match.</li>
+        </ul>
+        <figure class="shot">
+          <img src="/screen-focus.png" width="760" height="1495" loading="lazy"
+               alt="A SliceFocus focus session: the Reading and Studying block with a 24:28 Pomodoro countdown, a WORK label, cycle 1 of 4, and Stop and Pause controls.">
+        </figure>
+        <figure class="menubar-shot">
+          <img src="/screen-menubar.png" width="1135" height="282" loading="lazy"
+               alt="The SliceFocus Pomodoro timer “C1 24:05” shown enlarged — cycle 1, 24 minutes 5 seconds left — above the macOS menu bar where it lives, beside the system clock.">
+        </figure>
+      </div>
+    </section>
+
+    <section class="section-divider">
+      <div class="wrap">
+        <h2>Good to know</h2>
+        <ul class="limits">
+          <li>A Mac window that is open but not in front can take up to a minute to show a change. The lock screen and the menu bar follow within seconds.</li>
+          <li>You can start without an account. One timer across devices needs signing in on each.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section-divider guide-close">
+      <div class="wrap">
+        <p>Free on iPhone and Mac. No ads, nothing to buy, no sign-up to start.</p>
+        <a class="appstore" href="https://apps.apple.com/app/id6761280632" data-loc="guide-body" aria-label="Download SliceFocus on the App Store">
+          <img src="/download-on-the-app-store.svg" alt="Download on the App Store" width="156" height="52">
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="links">
+        <a href="/study-day/">Plan a study day</a>
+        <a href="/time-blocking/">Time blocking</a>
+        <a href="/pomodoro/">Pomodoro timer</a>
+        <a href="/planned-vs-actual/">Planned vs actual</a>
+        <a href="/focus-shield/">Focus Shield guide</a>
+      </p>
+      <p class="links">
+        <a href="/">Home</a>
+        <a href="https://apps.apple.com/app/id6761280632" data-loc="footer">App Store</a>
+        <a href="https://github.com/AnunnakiCosmoCrew">GitHub</a>
+        <a href="https://anunnakicosmocrew.github.io/slicefocus-docs/legal/privacy-policy">Privacy</a>
+      </p>
+      <p class="fineprint">slicefocus.app uses privacy-friendly analytics to count visits and App&nbsp;Store clicks — no cross-site tracking, no ads.</p>
+      <p>© 2026 <a href="https://cosmocrew.dev/">CosmoCrew</a> — a brand of <a href="https://luvita.tr/">Luvita&nbsp;Teknoloji&nbsp;Ltd.&nbsp;Şti.</a></p>
+    </div>
+  </footer>
+
+  <!-- App Store funnel telemetry (MER-324, ADR-044). Here the campaign token is fixed to this
+       page (pomodoro), whatever ?utm_source says, so App Store Connect splits downloads
+       by page. -->
+  <script>
+    (function () {
+      var OURS = 'a[href*="apps.apple.com"][href*="id6761280632"]';
+      // Apple's provider token for our developer account. App Store Connect counts a
+      // campaign only when the link carries both pt and ct (App Store Connect Help,
+      // "Campaign links"); mt=8 is the media type Apple's own campaign links use.
+      var PT = '128684421';
+      var ct = 'pomodoro';
+      document.querySelectorAll(OURS).forEach(function (a) {
+        try {
+          var u = new URL(a.href);
+          u.searchParams.set('pt', PT);
+          u.searchParams.set('ct', ct);
+          u.searchParams.set('mt', '8');
+          a.href = u.toString();
+        }
+        catch (e) { /* leave href untouched if it can't be parsed */ }
+      });
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest(OURS);
+        if (!a || typeof gtag !== 'function') return;
+        gtag('event', 'app_store_click', {
+          link_location: a.getAttribute('data-loc') || 'unknown',
+          campaign: ct,
+          transport_type: 'beacon'
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

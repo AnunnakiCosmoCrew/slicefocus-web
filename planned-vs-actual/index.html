@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Same GA4 web stream as the home page (MER-324). -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBK98EW3WQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('consent', 'default', { analytics_storage: 'granted' });
+    gtag('config', 'G-VBK98EW3WQ');
+  </script>
+
+  <title>Planned vs actual: see where your day went | SliceFocus</title>
+  <meta name="description" content="A plan shows what you meant to do. SliceFocus also keeps what you did, and lays one over the other. Free on iPhone and Mac.">
+  <link rel="canonical" href="https://slicefocus.app/planned-vs-actual/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="SliceFocus">
+  <meta property="og:title" content="Planned vs actual: see where your day went | SliceFocus">
+  <meta property="og:description" content="A plan shows what you meant to do. SliceFocus also keeps what you did, and lays one over the other. Free on iPhone and Mac.">
+  <meta property="og:url" content="https://slicefocus.app/planned-vs-actual/">
+  <meta property="og:image" content="https://slicefocus.app/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="SliceFocus — a day laid out on a 24-hour clock.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Planned vs actual: see where your day went | SliceFocus">
+  <meta name="twitter:description" content="A plan shows what you meant to do. SliceFocus also keeps what you did, and lays one over the other. Free on iPhone and Mac.">
+  <meta name="twitter:image" content="https://slicefocus.app/og.png">
+
+  <meta name="theme-color" content="#f3f5f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111714" media="(prefers-color-scheme: dark)">
+
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400..600&display=swap">
+
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell nav">
+      <a class="wordmark" href="/">
+        <img src="/icon.svg" alt="" width="26" height="26">
+        <span class="wordmark-text">SliceFocus <span class="maker">by CosmoCrew</span></span>
+      </a>
+      <a class="btn-dark" href="https://apps.apple.com/app/id6761280632" data-loc="header">Get the app</a>
+    </div>
+  </header>
+
+  <main class="guide">
+    <!-- Copy source of truth: slicefocus-docs plans/moment-pages.md, "Page 5"
+         (slicefocus-web#51). Change the wording there first. The timer's rounds run by
+         themselves inside a started session; each block's session is started by the user. -->
+    <section class="guide-intro">
+      <div class="wrap">
+        <h1>See where your day actually went.</h1>
+        <p class="lede">A plan shows what you meant to do. SliceFocus also keeps what you did, and lays one over the other. Free on iPhone and Mac.</p>
+      </div>
+    </section>
+
+    <section class="section-divider">
+      <div class="wrap">
+        <h2>What you can look at</h2>
+        <ul class="vs-suits">
+          <li><b>Actual vs Planned.</b> The focus time you logged, laid over the blocks you planned, day by day.</li>
+          <li><b>Session history.</b> Every session you finished.</li>
+          <li><b>Trends.</b> Focus minutes per day, and by week and month, split by category.</li>
+          <li><b>A weekly recap.</b> An optional summary of your focus week every Monday.</li>
+        </ul>
+        <figure class="shot">
+          <img src="/screen-planned-actual.png" width="760" height="1651" loading="lazy"
+               alt="The Actual vs Planned screen on iPhone for 15 to 21 October. Each planned block shows its planned and actual minutes and a bar: Plan the day, 29 of 30 minutes, 96.7%; Deep work: product spec, 117 of 120 minutes, 97.5%; Coffee break, 0 of 15 minutes; Standup &amp; reviews, 39 of 45 minutes, 86.7%.">
+        </figure>
+      </div>
+    </section>
+
+    <section class="section-divider">
+      <div class="wrap">
+        <h2>Good to know</h2>
+        <ul class="limits">
+          <li>“Actual” means time you spent with the timer running. The app does not watch what you do in the background, so time without the timer is not counted.</li>
+          <li>Calendar events you imported are not counted as planned blocks here.</li>
+          <li>If you sign in, your history follows you to your other devices.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section-divider guide-close">
+      <div class="wrap">
+        <p>Free on iPhone and Mac. No ads, nothing to buy, no sign-up to start.</p>
+        <a class="appstore" href="https://apps.apple.com/app/id6761280632" data-loc="guide-body" aria-label="Download SliceFocus on the App Store">
+          <img src="/download-on-the-app-store.svg" alt="Download on the App Store" width="156" height="52">
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="links">
+        <a href="/study-day/">Plan a study day</a>
+        <a href="/time-blocking/">Time blocking</a>
+        <a href="/pomodoro/">Pomodoro timer</a>
+        <a href="/planned-vs-actual/">Planned vs actual</a>
+        <a href="/focus-shield/">Focus Shield guide</a>
+      </p>
+      <p class="links">
+        <a href="/">Home</a>
+        <a href="https://apps.apple.com/app/id6761280632" data-loc="footer">App Store</a>
+        <a href="https://github.com/AnunnakiCosmoCrew">GitHub</a>
+        <a href="https://anunnakicosmocrew.github.io/slicefocus-docs/legal/privacy-policy">Privacy</a>
+      </p>
+      <p class="fineprint">slicefocus.app uses privacy-friendly analytics to count visits and App&nbsp;Store clicks — no cross-site tracking, no ads.</p>
+      <p>© 2026 <a href="https://cosmocrew.dev/">CosmoCrew</a> — a brand of <a href="https://luvita.tr/">Luvita&nbsp;Teknoloji&nbsp;Ltd.&nbsp;Şti.</a></p>
+    </div>
+  </footer>
+
+  <!-- App Store funnel telemetry (MER-324, ADR-044). Here the campaign token is fixed to this
+       page (planned_actual), whatever ?utm_source says, so App Store Connect splits downloads
+       by page. -->
+  <script>
+    (function () {
+      var OURS = 'a[href*="apps.apple.com"][href*="id6761280632"]';
+      // Apple's provider token for our developer account. App Store Connect counts a
+      // campaign only when the link carries both pt and ct (App Store Connect Help,
+      // "Campaign links"); mt=8 is the media type Apple's own campaign links use.
+      var PT = '128684421';
+      var ct = 'planned_actual';
+      document.querySelectorAll(OURS).forEach(function (a) {
+        try {
+          var u = new URL(a.href);
+          u.searchParams.set('pt', PT);
+          u.searchParams.set('ct', ct);
+          u.searchParams.set('mt', '8');
+          a.href = u.toString();
+        }
+        catch (e) { /* leave href untouched if it can't be parsed */ }
+      });
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest(OURS);
+        if (!a || typeof gtag !== 'function') return;
+        gtag('event', 'app_store_click', {
+          link_location: a.getAttribute('data-loc') || 'unknown',
+          campaign: ct,
+          transport_type: 'beacon'
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
