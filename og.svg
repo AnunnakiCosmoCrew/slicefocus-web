@@ -3,6 +3,8 @@
        The clock is the weekday plan the demo account is seeded with (SliceFocusFE
        tool/screenshots/seed.py: WEEKDAY and CATEGORIES), the same day the App Store
        screenshots and the hero video show. 00:00 at the top, clockwise.
+       The plan leaves three spans free (18:00-18:30, 19:30-20:00, 21:00-22:30); they show
+       the lighter disc underneath, as free time does in the app.
        Source for og.png: rsvg-convert -w 1200 -h 630 og.svg -o og.png. ADR-042: minimal and sincere. -->
   <rect width="1200" height="630" fill="#f3f5f0"/>
 
@@ -20,7 +22,7 @@
   <text x="100" y="546" font-family="-apple-system, Helvetica, Arial, sans-serif"
         font-size="24" fill="#56655d">that runs your blocks by itself on iPhone and Mac.</text>
 
-  <!-- The signature day -->
+  <!-- The signature day. The disc is free time; the wedges are the planned blocks. -->
   <circle cx="930" cy="315" r="200" fill="#e4e8e0"/>
   <path d="M 930 315 L 930.0 115.0 A 200 200 0 0 1 1128.3 341.1 Z" fill="#8A8F98" stroke="#f3f5f0" stroke-width="2.5" stroke-linejoin="round"/>
   <path d="M 930 315 L 1128.3 341.1 A 200 200 0 0 1 1119.4 379.3 Z" fill="#43AA8B" stroke="#f3f5f0" stroke-width="2.5" stroke-linejoin="round"/>
