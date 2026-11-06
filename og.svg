@@ -11,8 +11,10 @@
   <text x="100" y="408" font-family="Iowan Old Style, Palatino, Georgia, serif"
         font-size="40" fill="#2d4a3e">It runs itself.</text>
   <rect x="102" y="452" width="116" height="6" rx="3" fill="#3c7a5e"/>
-  <text x="100" y="556" font-family="-apple-system, Helvetica, Arial, sans-serif"
-        font-size="26" fill="#56655d">A visual day planner with zero-touch auto-advance.</text>
+  <text x="100" y="538" font-family="-apple-system, Helvetica, Arial, sans-serif"
+        font-size="26" fill="#56655d">A day planner on a 24-hour clock, with a focus timer</text>
+  <text x="100" y="574" font-family="-apple-system, Helvetica, Arial, sans-serif"
+        font-size="26" fill="#56655d">that runs your blocks by itself on iPhone and Mac.</text>
 
   <!-- Radial mark (right) — the app's forest-palette donut, no icon tile. -->
   <g transform="translate(742,79) scale(0.46)">
