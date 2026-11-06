@@ -374,7 +374,7 @@ section { padding: clamp(48px, 8vw, 88px) 0; }
 .site-footer a { color: var(--muted); border-bottom-color: var(--line); }
 .site-footer a:hover { color: var(--fg); }
 .site-footer .links { margin-bottom: 0.6rem; }
-.site-footer .links a { margin: 0 10px; }
+.site-footer .links a { margin: 0 10px; white-space: nowrap; }   /* a label never splits across lines */
 .site-footer .fineprint { margin: 0 auto 0.6rem; max-width: 52ch; font-size: 0.8rem; opacity: 0.8; }
 
 @media (prefers-reduced-motion: reduce) {
@@ -500,6 +500,12 @@ section { padding: clamp(48px, 8vw, 88px) 0; }
 .guide .shot-bare img { border-radius: 0; background: transparent; box-shadow: none; }
 .guide-note { color: var(--muted); font-size: 0.97rem; }
 .device-nav a[aria-current="true"] { border-color: var(--accent); background: var(--accent); color: var(--btn-fg); }
+
+/* ---- Moment pages (/study-day/, /time-blocking/, /pomodoro/, /planned-vs-actual/) ----
+   The guide layout above, one page per moment of need. Each closes on the site's
+   closing line, with the App Store badge under it. */
+.guide-close p { margin: 0; text-wrap: balance; }
+.guide-close .appstore { margin-top: 1.2rem; }
 
 /* ---- Comparison pages (/vs/): who each app suits, then a table of checkable facts ---- */
 .vs-suits { margin: 0 0 1.4rem; padding: 0; list-style: none; }
