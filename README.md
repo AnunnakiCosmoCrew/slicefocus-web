@@ -1,7 +1,7 @@
 # slicefocus-web
 
-Public showcase site for **SliceFocus** — a visual day planner on a 24-hour
-radial clock with zero-touch auto-advance between focus blocks.
+Public showcase site for **SliceFocus**: a day planner on a 24-hour clock, with
+a focus timer that runs your blocks by itself on iPhone and Mac.
 
 Served via GitHub Pages at <https://slicefocus.app>.
 
