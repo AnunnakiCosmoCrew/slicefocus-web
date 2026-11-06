@@ -18,9 +18,9 @@
         font-size="40" fill="#2d4a3e">It runs itself.</text>
   <rect x="102" y="448" width="116" height="6" rx="3" fill="#3c7a5e"/>
   <text x="100" y="512" font-family="-apple-system, Helvetica, Arial, sans-serif"
-        font-size="24" fill="#56655d">A day planner on a 24-hour clock, with a focus timer</text>
+        font-size="24" fill="#56655d">A day planner on a 24-hour clock, with a Pomodoro timer</text>
   <text x="100" y="546" font-family="-apple-system, Helvetica, Arial, sans-serif"
-        font-size="24" fill="#56655d">that runs your blocks by itself on iPhone and Mac.</text>
+        font-size="24" fill="#56655d">that runs its rounds by itself on iPhone and Mac.</text>
 
   <!-- The signature day. The disc is free time; the wedges are the planned blocks. -->
   <circle cx="930" cy="315" r="200" fill="#e4e8e0"/>
