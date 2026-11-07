@@ -173,8 +173,9 @@ a:hover { color: var(--accent-ink); border-bottom-color: var(--accent-ink); }
   .hero-media { --hero-w: min(1100px, 100vw - 64px); }
 }
 
-/* The loop sits over the poster and fades in once it has actually played, so a
-   missing or blocked clip leaves the poster. */
+/* The tour sits over the poster and fades in once it has actually played, so a
+   missing or blocked clip leaves the poster. It plays once and rests on its last
+   frame (#54). */
 .hero-video {
   display: block;
   position: absolute;
@@ -187,7 +188,7 @@ a:hover { color: var(--accent-ink); border-bottom-color: var(--accent-ink); }
 }
 .hero-media.is-playing .hero-video { opacity: 1; }
 
-/* Pause/play (WCAG 2.2.2): a quiet paper disc, clay ring on hover and focus. */
+/* Pause/play/replay (WCAG 2.2.2): a quiet paper disc, clay ring on hover and focus. */
 .media-toggle {
   position: absolute;
   right: 16px;
@@ -207,8 +208,12 @@ a:hover { color: var(--accent-ink); border-bottom-color: var(--accent-ink); }
 .media-toggle[hidden] { display: none; }
 .media-toggle:hover { border-color: var(--accent); }
 .media-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.media-toggle .icon-replay,
 .media-toggle[data-state="playing"] .icon-play,
 .media-toggle[data-state="paused"] .icon-pause { display: none; }
+.media-toggle[data-state="ended"] .icon-play,
+.media-toggle[data-state="ended"] .icon-pause { display: none; }
+.media-toggle[data-state="ended"] .icon-replay { display: block; }
 
 /* A quiet line under the headline so time-blocking / Pomodoro users can
    self-identify before the lede. */
