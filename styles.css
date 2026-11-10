@@ -237,7 +237,6 @@ a:hover { color: var(--accent-ink); border-bottom-color: var(--accent-ink); }
 }
 .media-toggle[hidden] { display: none; }
 .media-toggle:hover { border-color: var(--accent); }
-.media-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .media-toggle .icon-replay,
 .media-toggle[data-state="playing"] .icon-play,
 .media-toggle[data-state="paused"] .icon-pause { display: none; }
@@ -535,6 +534,8 @@ section { padding: clamp(48px, 8vw, 88px) 0; }
 .guide .shot-bare img { border-radius: 0; background: transparent; box-shadow: none; }
 .guide-note { color: var(--muted); font-size: 0.97rem; }
 .device-nav a[aria-current="true"] { border-color: var(--accent); background: var(--accent); color: var(--btn-fg); }
+/* The current item is filled with the accent, so its focus ring uses the text colour. */
+.device-nav a[aria-current="true"]:focus-visible { outline-color: var(--fg); }
 
 /* ---- Moment pages (/study-day/, /time-blocking/, /pomodoro/, /planned-vs-actual/) ----
    The guide layout above, one page per moment of need. Each closes on the site's
