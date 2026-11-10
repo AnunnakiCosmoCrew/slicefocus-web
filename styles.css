@@ -71,6 +71,36 @@ h2 { font-size: clamp(1.7rem, 4.2vw, 2.3rem); margin: 0 0 0.6rem; line-height: 1
 
 p { margin: 0 0 1.1rem; }
 
+
+/* ---- Keyboard access (WCAG 2.4.1, 2.4.7, 2.4.11; ADR 0011 §5.3) ----
+   One visible focus ring for everything that takes focus, in the accent colour
+   (4.6:1 on the light canvas, 8.6:1 on the dark one, so above the 3:1 minimum for
+   UI indicators). Colours are the current page tokens; swap to the vendored
+   cosmocrew-web token CSS when it ships. */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.btn-dark:focus-visible { outline-offset: 4px; }
+
+/* Skip link: first focusable element, off-screen until focused. */
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: 8px;
+  z-index: 100;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--btn);
+  color: var(--btn-fg);
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+.skip-link:focus { transform: none; }
+.skip-link:hover { color: var(--btn-fg); border: 0; }
+
+/* The target of the skip link takes focus without a ring around the whole page. */
+main:focus { outline: none; }
+
 a {
   color: var(--accent);
   text-decoration: none;
