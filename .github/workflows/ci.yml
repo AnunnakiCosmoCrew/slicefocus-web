@@ -1,0 +1,34 @@
+name: CI
+
+# The gate for pull requests. The site is plain HTML at the repo root (no build
+# step), so the shared axe-core check (project-templates/actions/a11y-check,
+# ADR 0011 §5.3) serves the root and tests every page at WCAG 2.2 AA, failing on
+# any serious or critical violation. Documented exceptions go in .a11y-allow.json
+# at the repo root, each with a reason; never add one just to get green.
+#
+# The job is named "Accessibility check" so it can be added to the main-protection
+# ruleset as a required check.
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  a11y:
+    name: Accessibility check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Accessibility check
+        uses: AnunnakiCosmoCrew/project-templates/actions/a11y-check@18cac3613e6008038fceca48aeb8397a6b342098 # main; bump deliberately
+        with:
+          root: .

@@ -71,6 +71,7 @@
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <header class="site-header">
     <div class="shell nav">
       <a class="wordmark" href="/">
@@ -81,7 +82,7 @@
     </div>
   </header>
 
-  <main class="guide">
+  <main id="main" tabindex="-1" class="guide">
     <!-- Copy source of truth: the recovery lines repeat the app's own
          focusShieldPermission*, focusShieldPickerHint and focusShieldSafariAccessHint
          strings (SliceFocusFE lib/l10n/app_en.arb). Change them there first.

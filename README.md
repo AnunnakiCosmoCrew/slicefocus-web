@@ -21,6 +21,7 @@ edit, commit, push; GitHub Pages redeploys automatically (~1 minute).
 | `og.png` / `.svg` | 1200×630 link-preview (Open Graph) card |
 | `download-on-the-app-store.svg` | Official Apple badge |
 | `icon.svg` / `apple-touch-icon.png` | Favicons |
+| `.github/workflows/ci.yml` | Accessibility check (axe-core, WCAG 2.2 AA) on every PR; exceptions in `.a11y-allow.json` with a reason (ADR 0011) |
 | `CNAME` | Custom domain (`slicefocus.app`) |
 | `.nojekyll` | Serve files as-is (skip Jekyll) |
 
